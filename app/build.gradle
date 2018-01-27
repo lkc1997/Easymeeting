@@ -1,6 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions{
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion 25
     buildToolsVersion "27.0.0"
     defaultConfig {
@@ -27,4 +36,20 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    // LeanCloud 基础包
+    compile ('cn.leancloud.android:avoscloud-sdk:v4.6.1')
+    // 推送与实时聊天需要的包
+    compile ('cn.leancloud.android:avoscloud-push:v4.6.1@aar'){transitive = true}
+    // LeanCloud 统计包
+    compile ('cn.leancloud.android:avoscloud-statistics:v4.6.1')
+    // LeanCloud 用户反馈包
+    compile ('cn.leancloud.android:avoscloud-feedback:v4.6.1@aar')
+    // avoscloud-sns：LeanCloud 第三方登录包
+    compile ('cn.leancloud.android:avoscloud-sns:v4.6.1@aar')
+    compile ('cn.leancloud.android:qq-sdk:1.6.1-leancloud')
+    // 新浪微博 SDK
+    //compile('com.sina.weibo.sdk:core:4.1.4:openDefaultRelease@aar')
+    // LeanCloud 应用内搜索包
+    compile ('cn.leancloud.android:avoscloud-search:v4.6.1@aar')
 }
