@@ -1,12 +1,8 @@
-package com.lkc97.easymeeting.module;
+package com.lkc97.easymeeting.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.SaveCallback;
 import com.lkc97.easymeeting.R;
 
 public class MainActivity extends AppCompatActivity {
