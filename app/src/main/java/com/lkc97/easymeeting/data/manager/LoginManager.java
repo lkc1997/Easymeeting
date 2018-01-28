@@ -2,7 +2,9 @@ package com.lkc97.easymeeting.data.manager;
 
 import android.content.SharedPreferences;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.LogInCallback;
 import com.lkc97.easymeeting.data.network.Login;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -12,24 +14,19 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class LoginManager {
-    private Login mLogin=new Login();
+    public boolean loginByPassword(String userName,String password){
+        Login mlogin=new Login();
+        mlogin.loginByPassword(userName,password);
+        return mlogin.getLoginState();
+    }
     public boolean checkLoginState(){
         AVUser currentUser = AVUser.getCurrentUser();
         if (currentUser != null) {
             // 跳转到首页
             return true;
         } else {
-            //缓存用户对象为空时，打开用户注册界面
+            //缓存用户对象为空时，可打开用户注册界面…
             return false;
         }
-    }
-    //发送验证码
-    public void sendVerificationCode(String phoneNumber){
-        mLogin.loginByPhoneNumber(phoneNumber);
-    }
-    //使用验证码登陆
-    public boolean checkVerificationCode(String VerificationCode){
-        mLogin.checkVerificationCode(VerificationCode);
-        return mLogin.getLoginState();
     }
 }

@@ -10,30 +10,16 @@ import com.avos.avoscloud.RequestMobileCodeCallback;
  */
 
 public class Login{
-    private static String phoneNumber=null;
-    private static boolean loginState=false;
-    public void loginByPhoneNumber(String userPhoneNumber){
-        AVUser.requestLoginSmsCodeInBackground(userPhoneNumber, new RequestMobileCodeCallback() {
-            @Override
-            public void done(AVException e) {
-                if (null == e) {
-                // 请求成功
-                } else {
-                // 请求失败
-                }
-            }
-        });
-        phoneNumber=userPhoneNumber;
-    }
-    public void checkVerificationCode(String verificationCode) {
-        AVUser.signUpOrLoginByMobilePhoneInBackground(phoneNumber, verificationCode, new LogInCallback<AVUser>() {
+    private boolean loginState=false;
+    public void loginByPassword(String userName,String password){
+        AVUser.logInInBackground(userName, password, new LogInCallback<AVUser>() {
             @Override
             public void done(AVUser avUser, AVException e) {
-                if (e == null) {
-                    // 登陆成功
+                if(e==null){
+                    //登陆成功
                     loginState=true;
-                } else {
-                    // 登陆失败
+                }else{
+                    //登陆失败
                 }
             }
         });
