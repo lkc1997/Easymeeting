@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
         if(!mLoginmanager.checkLoginState()){
             //无缓存，打开注册页面
             Intent loginIntent=new Intent(MainActivity.this, LoginActivity.class);
+            //销毁当前活动，让打开的活动无法返回当前活动
+            loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(loginIntent);
         }
-
     }
 }
