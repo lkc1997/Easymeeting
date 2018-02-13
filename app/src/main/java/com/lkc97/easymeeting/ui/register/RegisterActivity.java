@@ -1,13 +1,17 @@
 package com.lkc97.easymeeting.ui.register;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.data.network.Login;
 import com.lkc97.easymeeting.data.network.Register;
+import com.lkc97.easymeeting.ui.MainActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText usernamerEdittxt=null;
@@ -25,12 +29,25 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn=(Button)findViewById(R.id.register_btn);
     }
 
-    public void registerOnclick(){
-        if(mRegister.registerByPassword(usernamerEdittxt.getText().toString(),passwordEdittext.getText().toString(),emailAddress.getText().toString())){
-            ;
+    public void registerOnclick(View v){
+        String sUsename=usernamerEdittxt.getText().toString().trim();
+        String sPassword=passwordEdittext.getText().toString().trim();
+        String sEmailAddress=passwordEdittext.getText().toString();
+        if("".equals(sUsename)||"".equals(sPassword)||"".equals(sEmailAddress)) {
+            Toast.makeText(getApplicationContext(), "请正确填写注册信息",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(mRegister.registerByPassword(sUsename,sPassword,sEmailAddress)){
+            Login mLogin=new Login(sUsename,sPassword);
+            mLogin.loginByPassword();
+            Intent loginIntent=new Intent(this, MainActivity.class);
+            //销毁当前活动，让打开的活动无法返回当前活动
+            loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(loginIntent);
         }
         else{
-            Toast.makeText(getApplicationContext(), "注册失败,用户名已存在",
+            Toast.makeText(getApplicationContext(), "注册失败,用户名已存在或请求出错",
                     Toast.LENGTH_SHORT).show();
         }
     }

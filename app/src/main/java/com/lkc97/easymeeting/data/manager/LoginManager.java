@@ -14,11 +14,10 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class LoginManager {
-    public boolean loginByPassword(String userName,String password){
-        Login mLogin=new Login();
-        mLogin.loginByPassword(userName,password);
+    public int loginByPassword(String userName,String password){
+        Login mLogin=new Login(userName,password);
         //登陆成功返回true,否则返回false
-        return mLogin.getLoginState();
+        return mLogin.loginByPassword();
     }
     public boolean checkLoginState(){
         AVUser currentUser = AVUser.getCurrentUser();
