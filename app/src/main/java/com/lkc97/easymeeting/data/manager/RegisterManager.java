@@ -1,5 +1,11 @@
 package com.lkc97.easymeeting.data.manager;
 
+import android.os.Message;
+import android.util.Log;
+
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.SignUpCallback;
 import com.lkc97.easymeeting.data.network.Register;
 
 /**
@@ -8,8 +14,4 @@ import com.lkc97.easymeeting.data.network.Register;
 
 public class RegisterManager {
 
-    public boolean registerByPassword(String userName,String password,String emailAddress){
-        Register mRegister=new Register();
-        return mRegister.registerByPassword(userName,password,emailAddress);
-    }
 }
