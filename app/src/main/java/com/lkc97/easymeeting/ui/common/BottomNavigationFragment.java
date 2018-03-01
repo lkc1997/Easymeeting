@@ -63,18 +63,22 @@ public class BottomNavigationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_bottom_navigation,container,false);
+
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)view.findViewById(R.id.bottom_navigation_bar);//底部导航栏，fragment 不提供findViewById
 
-        bottomNavigationBar.setBarBackgroundColor(R.color.colorPrimaryDark);//应为背景颜色，实为选中颜色
-        bottomNavigationBar.setInActiveColor(R.color.gray);//未选中时的颜色
-        bottomNavigationBar.setActiveColor(R.color.white);//应为选中时的颜色，实为背景颜色
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);//MODE_SHIFTING
 
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.conf, "发现"))
-                .addItem(new BottomNavigationItem(R.drawable.topic, "话题"))
-                .addItem(new BottomNavigationItem(R.drawable.newcon, "会议"))
-                .addItem(new BottomNavigationItem(R.drawable.friend, "好友"))
-                .addItem(new BottomNavigationItem(R.drawable.mine, "我的"))
+                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC//STYLE_RIPPLE
+                );
+
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.conf, "发现").setActiveColorResource(R.color.material_orange_A200))
+                .addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
+                .addItem(new BottomNavigationItem(R.drawable.newcon, "会议").setActiveColorResource(R.color.material_blue_A200))
+                .addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
+                .addItem(new BottomNavigationItem(R.drawable.mine, "我的").setActiveColorResource(R.color.material_blue_grey_500))
+                .setFirstSelectedPosition(0)
                 .initialise();
         // Inflate the layout for this fragment
 
