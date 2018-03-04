@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lkc97.easymeeting.R;
 
 /**
@@ -26,6 +24,7 @@ public class BottomNavigationFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ConfFragment confFrag;
 
     public BottomNavigationFragment() {
         // Required empty public constructor
@@ -49,7 +48,6 @@ public class BottomNavigationFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,37 +61,7 @@ public class BottomNavigationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_bottom_navigation,container,false);
-
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)view.findViewById(R.id.bottom_navigation_bar);//底部导航栏，fragment 不提供findViewById
-
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);//MODE_SHIFTING
-
-        bottomNavigationBar
-                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC//STYLE_RIPPLE
-                );
-
-        bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.conf, "发现").setActiveColorResource(R.color.material_orange_A200))
-                .addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
-                .addItem(new BottomNavigationItem(R.drawable.newcon, "会议").setActiveColorResource(R.color.material_blue_A200))
-                .addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
-                .addItem(new BottomNavigationItem(R.drawable.mine, "我的").setActiveColorResource(R.color.material_blue_grey_500))
-                .setFirstSelectedPosition(0)
-                .initialise();
         // Inflate the layout for this fragment
-
-        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
-            @Override
-            public void onTabSelected(int position) {
-            }
-            @Override
-            public void onTabUnselected(int position) {
-            }
-            @Override
-            public void onTabReselected(int position) {
-            }
-        });
-
         return view;
     }
 
