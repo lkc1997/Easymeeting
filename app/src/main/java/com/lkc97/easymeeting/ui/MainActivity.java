@@ -14,7 +14,7 @@ import com.lkc97.easymeeting.ui.common.ConfFragment;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+//test
     private ConfFragment confFrag;
     /*设置默认Fragment*/
     private void setDefaultFrag() {
