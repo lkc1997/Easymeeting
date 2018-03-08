@@ -32,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private void addFrag(Fragment frag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (frag != null && !frag.isAdded()) {
-            ft.add(R.id.bottom_navigation_bar, frag);
+            ft.add(R.id.main_fragment, frag);
         }
-
         ft.commit();
-
-
     }
 
     /*隐藏所有fragment*/
@@ -73,9 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)findViewById(R.id.bottom_navigation_bar);//底部导航栏，fragment 不提供findViewById
-
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);//MODE_SHIFTING
-
         bottomNavigationBar
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC//STYLE_RIPPLE
                 );
@@ -85,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 .addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
                 .addItem(new BottomNavigationItem(R.drawable.newcon, "会议").setActiveColorResource(R.color.material_blue_A200))
                 .addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
-                .addItem(new BottomNavigationItem(R.drawable.mine, "我的").setActiveColorResource(R.color.material_blue_grey_500))
+                .addItem(new BottomNavigationItem(R.drawable.mine, "我的信息").setActiveColorResource(R.color.material_blue_grey_500))
                 .setFirstSelectedPosition(0)
                 .initialise();
 

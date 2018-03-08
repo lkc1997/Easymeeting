@@ -4,8 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.MainActivity">
-
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <!-- fragment 置底 -->
     <LinearLayout android:id="@+id/test_bottom_buttons"
         android:layout_width="fill_parent" android:layout_height="wrap_content"
