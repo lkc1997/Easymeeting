@@ -48,4 +48,5 @@ dependencies {
     compile ('cn.leancloud.android:avoscloud-search:v4.6.4@aar')
 
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+    compile ('cn.leancloud.android:chatkit:1.0.6')
 }
