@@ -3,10 +3,13 @@ package com.lkc97.easymeeting.ui.common;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lkc97.easymeeting.R;
 
 /**
@@ -25,6 +28,45 @@ public class BottomNavigationFragment extends Fragment {
     private String mParam2;
 
     private ConfFragment confFrag;
+    private BuddyListFragment buddyListFragment;
+    /*设置默认Fragment*/
+    private void setDefaultFrag() {
+
+        if (confFrag == null) {
+            confFrag = new ConfFragment();
+        }
+
+        addFrag(confFrag);
+        /*默认显示confFrag*/
+        getFragmentManager().beginTransaction().show(confFrag).commit();
+    }
+
+    /*添加Frag*/
+    private void addFrag(Fragment frag) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if (frag != null && !frag.isAdded()) {
+            ft.add(R.id.main_fragment, frag);
+        }
+        ft.commit();
+    }
+
+    /*隐藏所有fragment*/
+    private void hideAllFrag() {
+        hideFrag(confFrag);
+        //hideFrag(topicFrag);
+        //hideFrag(newconFrag);
+        //hideFrag(friendFrag);
+        //hideFrag(mineFrag);
+    }
+
+    /*隐藏frag*/
+    private void hideFrag(Fragment frag) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if (frag != null && frag.isAdded()) {
+            ft.hide(frag);
+        }
+        ft.commit();
+    }
 
     public BottomNavigationFragment() {
         // Required empty public constructor
@@ -60,9 +102,45 @@ public class BottomNavigationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_bottom_navigation,container,false);
-        // Inflate the layout for this fragment
+        View view=inflater.inflate(R.layout.fragment_bottom_navigation,container,false);// Inflate the layout for this fragment
+        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)view.findViewById(R.id.bottom_navigation_bar);
+
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.conf, "发现").setActiveColorResource(R.color.material_orange_A200))
+                .addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
+                .addItem(new BottomNavigationItem(R.drawable.newcon, "会议").setActiveColorResource(R.color.material_blue_A200))
+                .addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
+                .addItem(new BottomNavigationItem(R.drawable.mine, "我的信息").setActiveColorResource(R.color.material_blue_grey_500))
+                .setFirstSelectedPosition(0)
+                .initialise();
+        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
+            @Override
+            public void onTabSelected(int position) {
+                hideAllFrag();//先隐藏所有frag
+                switch (position) {
+                    case 0:
+                        if (confFrag == null) {
+                            confFrag = new ConfFragment();
+                        }
+                        addFrag(confFrag);
+                        getFragmentManager().beginTransaction().show(confFrag).commit();
+                        break;
+                    case 3:
+                        if (buddyListFragment == null) {
+                            buddyListFragment = new BuddyListFragment();
+                        }
+                        addFrag(buddyListFragment);
+                        getFragmentManager().beginTransaction().show(buddyListFragment).commit();
+                        break;
+                }
+            }
+            @Override
+            public void onTabUnselected(int position) {
+            }
+            @Override
+            public void onTabReselected(int position) {
+            }
+        });
         return view;
     }
-
 }
