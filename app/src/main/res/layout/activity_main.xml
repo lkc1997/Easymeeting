@@ -10,15 +10,11 @@
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <!-- fragment 置底 -->
-    <LinearLayout android:id="@+id/test_bottom_buttons"
-        android:layout_width="fill_parent" android:layout_height="wrap_content"
-        android:orientation="horizontal" android:layout_alignParentBottom="true">
-        <fragment
-            android:id="@+id/button_navigation_fragment"
-            android:name="com.lkc97.easymeeting.ui.common.BottomNavigationFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+    <fragment
+        android:id="@+id/button_navigation_fragment"
+        android:name="com.lkc97.easymeeting.ui.common.BottomNavigationFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
 </RelativeLayout>

@@ -10,12 +10,14 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.manager.LoginManager;
+import com.lkc97.easymeeting.ui.common.BuddyListFragment;
 import com.lkc97.easymeeting.ui.common.ConfFragment;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private ConfFragment confFrag;
+    private BuddyListFragment buddyListFragment;
     /*设置默认Fragment*/
     private void setDefaultFrag() {
         if (confFrag == null) {
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(loginIntent);
         }
 
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)findViewById(R.id.bottom_navigation_bar);//底部导航栏，fragment 不提供findViewById
+        /*BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)findViewById(R.id.bottom_navigation_bar);//底部导航栏，fragment 不提供findViewById
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);//MODE_SHIFTING
         bottomNavigationBar
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC//STYLE_RIPPLE
@@ -96,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().show(confFrag).commit();
                         getSupportActionBar().setTitle("会议推荐");
                         break;
+                    case 3:
+                        if (buddyListFragment == null) {
+                            buddyListFragment = new BuddyListFragment();
+                        }
+                        addFrag(buddyListFragment);
+                        getSupportFragmentManager().beginTransaction().show(buddyListFragment).commit();
+                        getSupportActionBar().setTitle("好友");
+                        break;
                 }
              }
              @Override
@@ -104,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
              @Override
              public void onTabReselected(int position) {
              }
-        });
+        });*/
 
     }
 }
