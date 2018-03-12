@@ -1,43 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.login.LoginActivity">
-    <EditText
-        android:id="@+id/username_edittxt"
+
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入账号"/>
-    <EditText
-        android:id="@+id/password_edittxt"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/circle_corner">
+        <EditText
+            android:id="@+id/username_edittxt"
+            android:layout_width="270sp"
+            android:layout_height="60sp"
+            android:layout_marginLeft="20dp"
+            android:hint="请输入账号"
+            android:singleLine="true"/>
+
+        <ImageView
+            android:id="@+id/username_img"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/acccount" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入密码"
-        android:layout_below="@+id/username_edittxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/circle_corner">
+        <EditText
+            android:id="@+id/password_edittxt"
+            android:layout_width="270sp"
+            android:layout_height="60sp"
+            android:layout_marginLeft="20dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+
+        <ImageView
+            android:id="@+id/password_img"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/password" />
+    </RelativeLayout>
+
     <Button
         android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:layout_margin="20dp"
+        android:background="@drawable/circle_corner"/>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/forget_touch"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="忘记密码？"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/register_touch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新用户注册"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/remain_touch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登陆"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_below="@+id/password_edittxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="61dp" />
-    <Button
-        android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="注册"
-        android:layout_marginRight="55dp"
-        android:layout_marginEnd="55dp"
-        android:layout_alignBaseline="@+id/login_btn"
-        android:layout_alignBottom="@+id/login_btn"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center_horizontal"
+        android:text="登录即代表阅读并同意服务条款" />
+
+</LinearLayout>

@@ -1,10 +1,10 @@
 package com.lkc97.easymeeting.ui.register;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +16,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SignUpCallback;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.data.manager.RegisterManager;
-import com.lkc97.easymeeting.data.network.Login;
-import com.lkc97.easymeeting.data.network.Register;
 import com.lkc97.easymeeting.ui.MainActivity;
-import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     private  boolean registerState=false;
@@ -67,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         usernamerEdittxt=(EditText)findViewById(R.id.username_edittxt);
         passwordEdittext=(EditText)findViewById(R.id.password_edittxt);
         emailAddress=(EditText)findViewById(R.id.email_address_exittext);
-        registerBtn=(Button)findViewById(R.id.register_btn);
+        registerBtn=(Button) findViewById(R.id.register_btn);
     }
     public void registerOnclick(View v){
         String sUsename=usernamerEdittxt.getText().toString().trim();

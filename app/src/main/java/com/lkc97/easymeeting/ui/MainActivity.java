@@ -14,15 +14,13 @@ import com.lkc97.easymeeting.ui.common.ConfFragment;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
-//test
+
     private ConfFragment confFrag;
     /*设置默认Fragment*/
     private void setDefaultFrag() {
-
         if (confFrag == null) {
             confFrag = new ConfFragment();
         }
-
         addFrag(confFrag);
         /*默认显示confFrag*/
         getSupportFragmentManager().beginTransaction().show(confFrag).commit();
@@ -83,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 .addItem(new BottomNavigationItem(R.drawable.mine, "我的信息").setActiveColorResource(R.color.material_blue_grey_500))
                 .setFirstSelectedPosition(0)
                 .initialise();
+        setDefaultFrag();
 
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
             @Override

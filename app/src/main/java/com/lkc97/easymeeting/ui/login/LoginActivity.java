@@ -1,14 +1,16 @@
 package com.lkc97.easymeeting.ui.login;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
@@ -20,10 +22,11 @@ import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+    private ImageView bingPicImg;
     private EditText usernamerEdittxt=null;
     private EditText passwordEdittext=null;
     private Button loginBtn=null;
-    private Button registerBtn=null;
+    private TextView registerTouch=null;
     private LoginManager mLoginManager=new LoginManager();
     private Handler handler=new Handler(){
         public void handleMessage(Message msg){
@@ -49,9 +52,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         usernamerEdittxt=(EditText)findViewById(R.id.username_edittxt);
         passwordEdittext=(EditText)findViewById(R.id.password_edittxt);
         loginBtn=(Button)findViewById(R.id.login_btn);
-        registerBtn=(Button)findViewById(R.id.register_btn);
+        registerTouch=(TextView)findViewById(R.id.register_touch);
         loginBtn.setOnClickListener(this);
-        registerBtn.setOnClickListener(this);
+        registerTouch.setOnClickListener(this);
     }
     @Override
     public void onClick(View v){
@@ -59,8 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.login_btn:
                 loginBtn();
                 break;
-            case R.id.register_btn:
-                registerBtn();
+            case R.id.register_touch:
+                registerTouch();
                 break;
         }
     }
@@ -83,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(getApplicationContext(), "用户名或密码错误",
                     Toast.LENGTH_SHORT).show();*/
     }
-    public void registerBtn(){
+    public void registerTouch(){
         Intent registerIntent=new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(registerIntent);
     }
@@ -105,5 +108,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-
 }
