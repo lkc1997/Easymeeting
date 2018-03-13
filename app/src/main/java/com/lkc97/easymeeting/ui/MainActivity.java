@@ -5,19 +5,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-
-import com.ashokvarma.bottomnavigation.BottomNavigationBar;
-import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.manager.LoginManager;
-import com.lkc97.easymeeting.ui.common.BuddyListFragment;
 import com.lkc97.easymeeting.ui.common.ConfFragment;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private ConfFragment confFrag;
-    private BuddyListFragment buddyListFragment;
+
     /*设置默认Fragment*/
     private void setDefaultFrag() {
         if (confFrag == null) {

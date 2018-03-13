@@ -33,7 +33,7 @@ public class BottomNavigationFragment extends Fragment {
 
 
     private ConfFragment confFrag;
-    private BuddyListFragment buddyListFragment;
+    private ContactFragment contactFrag;
     /*设置默认Fragment*/
     private void setDefaultFrag() {
 
@@ -52,6 +52,8 @@ public class BottomNavigationFragment extends Fragment {
         if (frag != null && !frag.isAdded()) {
             ft.add(R.id.main_fragment, frag);
         }
+        else
+            ft.replace(R.id.main_fragment,frag);
         ft.commit();
     }
 
@@ -60,7 +62,7 @@ public class BottomNavigationFragment extends Fragment {
         hideFrag(confFrag);
         //hideFrag(topicFrag);
         //hideFrag(newconFrag);
-        //hideFrag(friendFrag);
+        hideFrag(contactFrag);
         //hideFrag(mineFrag);
     }
 
@@ -124,6 +126,7 @@ public class BottomNavigationFragment extends Fragment {
                 hideAllFrag();//先隐藏所有frag
                 switch (position) {
                     case 0:
+                        hideAllFrag();
                         if (confFrag == null) {
                             confFrag = new ConfFragment();
                         }
@@ -131,11 +134,12 @@ public class BottomNavigationFragment extends Fragment {
                         getFragmentManager().beginTransaction().show(confFrag).commit();
                         break;
                     case 3:
-                        if (buddyListFragment == null) {
-                            buddyListFragment = new BuddyListFragment();
+                        hideAllFrag();
+                        if (contactFrag== null) {
+                            contactFrag = new ContactFragment();
                         }
-                        addFrag(buddyListFragment);
-                        getFragmentManager().beginTransaction().show(buddyListFragment).commit();
+                        addFrag(contactFrag);
+                        getFragmentManager().beginTransaction().show(contactFrag).commit();
                         break;
                 }
             }
