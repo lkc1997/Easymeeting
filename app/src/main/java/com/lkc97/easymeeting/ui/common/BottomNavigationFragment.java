@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.avos.avoscloud.AVObject;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.data.callback.BuddyListCallBack;
-
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,6 +107,10 @@ public class BottomNavigationFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_bottom_navigation,container,false);// Inflate the layout for this fragment
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar)view.findViewById(R.id.bottom_navigation_bar);
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);//MODE_SHIFTING
+        bottomNavigationBar
+                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC//STYLE_RIPPLE
+                );
 
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.conf, "发现").setActiveColorResource(R.color.material_orange_A200))
@@ -120,6 +120,7 @@ public class BottomNavigationFragment extends Fragment {
                 .addItem(new BottomNavigationItem(R.drawable.mine, "我的信息").setActiveColorResource(R.color.material_blue_grey_500))
                 .setFirstSelectedPosition(0)
                 .initialise();
+        setDefaultFrag();
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
             @Override
             public void onTabSelected(int position) {
