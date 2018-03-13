@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.avos.avoscloud.AVObject;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.ui.adapter.Buddy;
+import com.lkc97.easymeeting.data.callback.BuddyListCallBack;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +34,7 @@ public class BuddyListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private List<Buddy> buddyList=new ArrayList<>();
+    private List<AVObject> thisBuddyList;
 
     public BuddyListFragment() {
         // Required empty public constructor
@@ -111,5 +111,11 @@ public class BuddyListFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    class UpdataBuddyListCallBack implements BuddyListCallBack {
+        @Override
+        public void getBuddyList(List<AVObject> buddyList){
+            thisBuddyList=buddyList;
+        }
     }
 }

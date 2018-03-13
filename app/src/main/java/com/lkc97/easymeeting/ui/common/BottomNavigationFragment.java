@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.avos.avoscloud.AVObject;
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.data.callback.BuddyListCallBack;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +30,7 @@ public class BottomNavigationFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     private ConfFragment confFrag;
     private BuddyListFragment buddyListFragment;
@@ -143,4 +148,5 @@ public class BottomNavigationFragment extends Fragment {
         });
         return view;
     }
+
 }

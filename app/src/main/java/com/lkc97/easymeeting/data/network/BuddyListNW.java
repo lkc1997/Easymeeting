@@ -5,9 +5,10 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
-import com.lkc97.easymeeting.ui.adapter.Buddy;
+import com.lkc97.easymeeting.data.callback.BuddyListCallBack;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -25,12 +26,12 @@ public class BuddyListNW {
         AVUser currentUser = AVUser.getCurrentUser();
         this.userName=currentUser.getUsername();
     }
-    public void getBuddyNameList(){
+    public void getBuddyNameList(final BuddyListCallBack buddyListCallBack){
         AVQuery<AVObject> buddyListQuery=query.whereEqualTo("uaerName",userName);
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                buddyList=list;
+                buddyListCallBack.getBuddyList(list);
             }
         });
     }
