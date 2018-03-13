@@ -1,11 +1,21 @@
 package com.lkc97.easymeeting.data.manager;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.lkc97.easymeeting.data.network.Login;
+import com.lkc97.easymeeting.ui.MainActivity;
+
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.activity.LCIMConversationActivity;
+import cn.leancloud.chatkit.utils.LCIMConstants;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -22,6 +32,17 @@ public class LoginManager {
     public boolean checkLoginState(){
         AVUser currentUser = AVUser.getCurrentUser();
         if (currentUser != null) {
+            //登陆chatkit
+            LCChatKit.getInstance().open(currentUser.getUsername(), new AVIMClientCallback() {
+                @Override
+                public void done(AVIMClient avimClient, AVIMException e) {
+                    if (null == e) {
+
+                    } else {
+
+                    }
+                }
+            });
             // 跳转到首页
             return true;
         } else {

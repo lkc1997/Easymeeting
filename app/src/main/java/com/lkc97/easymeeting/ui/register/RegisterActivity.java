@@ -15,8 +15,13 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SignUpCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
+
+import cn.leancloud.chatkit.LCChatKit;
 
 public class RegisterActivity extends AppCompatActivity {
     private  boolean registerState=false;
@@ -43,6 +48,16 @@ public class RegisterActivity extends AppCompatActivity {
         public void handleMessage(Message msg){
             switch (msg.what){
                 case 1:
+                    LCChatKit.getInstance().open(usernamerEdittxt.getText().toString().trim(), new AVIMClientCallback() {
+                        @Override
+                        public void done(AVIMClient avimClient, AVIMException e) {
+                            if (null == e) {
+
+                            } else {
+
+                            }
+                        }
+                    });
                     Intent loginIntent=new Intent(RegisterActivity.this, MainActivity.class);
                     //销毁当前活动，让打开的活动无法返回当前活动
                     loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
