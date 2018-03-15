@@ -1,6 +1,7 @@
 package com.lkc97.easymeeting.data.callback;
 
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVUser;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ import java.util.List;
  */
 
 public interface BuddyListCallBack {
-    void getBuddyList(List<AVObject> buddyList);
+    void receiveBuddyList(List<AVUser> avObjects);
 }

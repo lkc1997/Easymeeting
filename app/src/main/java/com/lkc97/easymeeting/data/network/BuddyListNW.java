@@ -1,5 +1,7 @@
 package com.lkc97.easymeeting.data.network;
 
+import android.util.Log;
+
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
@@ -17,21 +19,21 @@ import java.util.List;
 
 public class BuddyListNW {
     private String userName;
-    AVQuery<AVObject> query = new AVQuery<>("BuddyList");
-    List<AVObject> buddyList=new ArrayList<>();
-    public BuddyListNW(String userName){
-        this.userName=userName;
-    }
-    public BuddyListNW(){
-        AVUser currentUser = AVUser.getCurrentUser();
-        this.userName=currentUser.getUsername();
-    }
-    public void getBuddyNameList(final BuddyListCallBack buddyListCallBack){
-        AVQuery<AVObject> buddyListQuery=query.whereEqualTo("uaerName",userName);
-        query.findInBackground(new FindCallback<AVObject>() {
+    private AVQuery<AVObject> query = new AVQuery<>("_Follower");
+    private AVQuery<AVUser> followerQuery;
+    public void getBuddyList(final BuddyListCallBack buddyListCallBack){
+        try {
+            followerQuery = AVUser.getCurrentUser().followerQuery(AVUser.class);
+            followerQuery.include("follower");
+        }catch(AVException e){
+            Log.e("Easymeeting",e.getMessage());
+        }
+        followerQuery.findInBackground(new FindCallback<AVUser>() {
             @Override
-            public void done(List<AVObject> list, AVException e) {
-                buddyListCallBack.getBuddyList(list);
+            public void done(List<AVUser> avObjects, AVException avException) {
+                // avObjects 包含了 userA 的粉丝列表
+                Log.d("Easymeeting","list get "+avObjects.get(0).getUsername());
+                buddyListCallBack.receiveBuddyList(avObjects);
             }
         });
     }

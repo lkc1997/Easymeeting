@@ -5,6 +5,14 @@ package com.lkc97.easymeeting.ui.adapter;
  */
 
 
+import android.util.Log;
+
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVUser;
+import com.lkc97.easymeeting.data.callback.BuddyListCallBack;
+import com.lkc97.easymeeting.data.manager.BuddyListManager;
+import com.lkc97.easymeeting.data.network.BuddyListNW;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,15 +40,37 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     private static List<LCChatKitUser> partUsers = new ArrayList<LCChatKitUser>();
 
-    // 此数据均为 fake，仅供参考
     static {
+        /*BuddyListManager buddyListManager=new BuddyListManager();
+        buddyListManager.receiveuddyList();
+        List<AVObject> buddylist=buddyListManager.getBuddyList();
+        AVObject buddy;
+        for(int i = 0 ; i < buddylist.size() ; i++) {
+            buddy=buddylist.get(i);
+            partUsers.add(new LCChatKitUser(buddy.getString("userName"), buddy.getString("userName"), "http://www.avatarsdb.com/avatars/tom_and_jerry2.jpg"));
+        }
         partUsers.add(new LCChatKitUser("Tom", "Tom", "http://www.avatarsdb.com/avatars/tom_and_jerry2.jpg"));
         partUsers.add(new LCChatKitUser("Jerry", "Jerry", "http://www.avatarsdb.com/avatars/jerry.jpg"));
         partUsers.add(new LCChatKitUser("Harry", "Harry", "http://www.avatarsdb.com/avatars/young_harry.jpg"));
         partUsers.add(new LCChatKitUser("William", "William", "http://www.avatarsdb.com/avatars/william_shakespeare.jpg"));
-        partUsers.add(new LCChatKitUser("Bob", "Bob", "http://www.avatarsdb.com/avatars/bath_bob.jpg"));
-    }
+        partUsers.add(new LCChatKitUser("Bob", "Bob", "http://www.avatarsdb.com/avatars/bath_bob.jpg"));*/
 
+        BuddyListNW buddyListNW=new BuddyListNW();
+        buddyListNW.getBuddyList(new BuddyListCallBack() {
+            @Override
+            public void receiveBuddyList(List<AVUser> avObjects) {
+                AVUser currentUser = AVUser.getCurrentUser();
+                Log.d("Easymeeting","currentuser="+currentUser.getUsername());
+                Log.d("Easymeeting","avObjects size="+avObjects.size());
+                AVUser follower;
+                for(int i = 0 ; i < avObjects.size() ; i++) {
+                    follower=avObjects.get(i);
+                    partUsers.add(new LCChatKitUser(follower.getUsername(), follower.getUsername(), "http://www.avatarsdb.com/avatars/tom_and_jerry2.jpg"));
+                    Log.d("Easymeeting","list add "+avObjects.get(0).get("username"));
+                }
+            }
+        });
+    }
     @Override
     public void fetchProfiles(List<String> list, LCChatProfilesCallBack callBack) {
         List<LCChatKitUser> userList = new ArrayList<LCChatKitUser>();

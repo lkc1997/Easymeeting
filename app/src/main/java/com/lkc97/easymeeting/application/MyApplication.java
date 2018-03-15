@@ -3,6 +3,7 @@ package com.lkc97.easymeeting.application;
 import android.app.Application;
 
 import com.avos.avoscloud.AVOSCloud;
+import com.lkc97.easymeeting.ui.adapter.CustomUserProvider;
 
 import cn.leancloud.chatkit.LCChatKit;
 
