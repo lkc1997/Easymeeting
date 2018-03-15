@@ -32,7 +32,6 @@ public class BuddyListNW {
             @Override
             public void done(List<AVUser> avObjects, AVException avException) {
                 // avObjects 包含了 userA 的粉丝列表
-                Log.d("Easymeeting","list get "+avObjects.get(0).getUsername());
                 buddyListCallBack.receiveBuddyList(avObjects);
             }
         });

@@ -21,8 +21,5 @@ public class MyApplication extends Application {
         AVOSCloud.initialize(this,AppID,AppKey);
         // 开启调试日志(网络请求、错误消息等信息输出到 IDE 的日志窗口)
         AVOSCloud.setDebugLogEnabled(true);
-        //ChatKit初始化
-       // LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
-       // LCChatKit.getInstance().init(getApplicationContext(), AppID, AppKey);
     }
 }

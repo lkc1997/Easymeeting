@@ -36,7 +36,6 @@ public class ContactFragment extends Fragment {
 
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.contact_fragment_srl_list);
         recyclerView = (RecyclerView) view.findViewById(R.id.contact_fragment_rv_list);
-
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new LCIMDividerItemDecoration(getActivity()));

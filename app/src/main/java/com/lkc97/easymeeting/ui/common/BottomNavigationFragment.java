@@ -117,7 +117,7 @@ public class BottomNavigationFragment extends Fragment {
                 .addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
                 .addItem(new BottomNavigationItem(R.drawable.newcon, "会议").setActiveColorResource(R.color.material_blue_A200))
                 .addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
-                .addItem(new BottomNavigationItem(R.drawable.mine, "我的信息").setActiveColorResource(R.color.material_blue_grey_500))
+                .addItem(new BottomNavigationItem(R.drawable.mine, "我").setActiveColorResource(R.color.material_blue_grey_500))
                 .setFirstSelectedPosition(0)
                 .initialise();
         setDefaultFrag();

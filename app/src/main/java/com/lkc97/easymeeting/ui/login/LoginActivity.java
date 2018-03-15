@@ -75,16 +75,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
         loginByPassword(usernamerEdittxt.getText().toString().trim(),passwordEdittext.getText().toString().trim());
-        /*int loginResult=mLoginManager.loginByPassword();
-        if(loginResult==1){
-            Intent loginIntent=new Intent(LoginActivity.this, MainActivity.class);
-            //销毁当前活动，让打开的活动无法返回当前活动
-            loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(loginIntent);
-        }
-        else if(loginResult==-1)
-            Toast.makeText(getApplicationContext(), "用户名或密码错误",
-                    Toast.LENGTH_SHORT).show();*/
     }
     public void registerTouch(){
         Intent registerIntent=new Intent(LoginActivity.this, RegisterActivity.class);

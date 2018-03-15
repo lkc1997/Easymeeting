@@ -13,7 +13,6 @@ import com.lkc97.easymeeting.ui.common.ConfFragment;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
