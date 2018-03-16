@@ -24,5 +24,6 @@ public class MyApplication extends Application {
         AVOSCloud.setDebugLogEnabled(true);
         //初始化chatkit
         LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
+       // LCChatKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY);
     }
 }

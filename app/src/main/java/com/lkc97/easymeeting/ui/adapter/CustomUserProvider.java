@@ -41,14 +41,14 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     private static List<LCChatKitUser> partUsers = new ArrayList<LCChatKitUser>();
 
-    static {
+    public static void fetchBuddyList(){
         BuddyListNW buddyListNW=new BuddyListNW();
         buddyListNW.getBuddyList(new BuddyListCallBack() {
             @Override
             public void receiveBuddyList(List<AVUser> avObjects) {
                 AVUser currentUser = AVUser.getCurrentUser();
                 Log.d("Easymeeting","currentuser="+currentUser.getUsername());
-                Log.d("Easymeeting","avObjects size="+avObjects.size());
+                Log.d("Easymeeting","buddy size="+avObjects.size());
                 AVUser follower;
                 //添加自己
                 partUsers.add(new LCChatKitUser(currentUser.getUsername(), currentUser.getUsername()+"(自己)", currentUser.getAVFile("avatar").getUrl()));
@@ -59,7 +59,6 @@ public class CustomUserProvider implements LCChatProfileProvider {
                     partUsers.add(new LCChatKitUser(follower.getUsername(), follower.getUsername(), file.getUrl()));
                     Log.d("Easymeeting","list add "+avObjects.get(0).get("username"));
                 }
-
             }
         });
     }
