@@ -2,8 +2,13 @@ package com.lkc97.easymeeting.application;
 
 import android.app.Application;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.PushService;
+import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.im.v2.AVIMClient;
+import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.adapter.CustomUserProvider;
 
 import cn.leancloud.chatkit.LCChatKit;
@@ -24,6 +29,22 @@ public class MyApplication extends Application {
         AVOSCloud.setDebugLogEnabled(true);
         //初始化chatkit
         LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
-       // LCChatKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY);
+        LCChatKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY);
+        AVIMClient.setAutoOpen(true);
+        PushService.setDefaultPushCallback(this, MainActivity.class);
+        PushService.setAutoWakeUp(true);
+        PushService.setDefaultChannelId(this, "default");
+        AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
+            public void done(AVException e) {
+                if (e == null) {
+                    // 保存成功
+                    String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+                    System.out.println("---  " + installationId);
+                } else {
+                    // 保存失败，输出错误信息
+                    System.out.println("failed to save installation.");
+                }
+            }
+        });
     }
 }
