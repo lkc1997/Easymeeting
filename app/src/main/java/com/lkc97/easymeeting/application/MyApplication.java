@@ -10,6 +10,8 @@ import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.im.v2.AVIMClient;
 import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.adapter.CustomUserProvider;
+import com.lkc97.easymeeting.ui.common.BuddyActivity;
+import com.lkc97.easymeeting.ui.common.ContactFragment;
 
 import cn.leancloud.chatkit.LCChatKit;
 
@@ -28,12 +30,12 @@ public class MyApplication extends Application {
         // 开启调试日志(网络请求、错误消息等信息输出到 IDE 的日志窗口)
         AVOSCloud.setDebugLogEnabled(true);
         //初始化chatkit
-        LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
         LCChatKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY);
         AVIMClient.setAutoOpen(true);
-        PushService.setDefaultPushCallback(this, MainActivity.class);
+        PushService.setDefaultPushCallback(this, BuddyActivity.class);
         PushService.setAutoWakeUp(true);
         PushService.setDefaultChannelId(this, "default");
+        //保证设备注册到 LeanCloud 云端（推送功能）
         AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
             public void done(AVException e) {
                 if (e == null) {

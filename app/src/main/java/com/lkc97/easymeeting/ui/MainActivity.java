@@ -2,18 +2,17 @@ package com.lkc97.easymeeting.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.manager.LoginManager;
+import com.lkc97.easymeeting.data.network.BuddyListNW;
 import com.lkc97.easymeeting.ui.adapter.CustomUserProvider;
-import com.lkc97.easymeeting.ui.common.ConfFragment;
+import com.lkc97.easymeeting.ui.common.BuddyActivity;
+import com.lkc97.easymeeting.ui.common.TestActivity;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             //加载好友列表
-            CustomUserProvider.fetchBuddyList();
+            if(!BuddyListNW.buddyListState) {
+                CustomUserProvider.fetchBuddyList();
+                BuddyListNW.buddyListState=true;
+            }
         }
+    }
+    public void openBuddyActivity(){
+        Intent loginIntent=new Intent(MainActivity.this, BuddyActivity.class);
+        startActivity(loginIntent);
     }
 }

@@ -1,6 +1,7 @@
 package com.lkc97.easymeeting.ui.common;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +12,9 @@ import android.view.ViewGroup;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.ui.MainActivity;
+
+import cn.leancloud.chatkit.activity.LCIMConversationListFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -135,12 +139,14 @@ public class BottomNavigationFragment extends Fragment {
                         getFragmentManager().beginTransaction().show(confFrag).commit();
                         break;
                     case 3:
-                        hideAllFrag();
+                        /*hideAllFrag();
                         if (contactFrag== null) {
                             contactFrag = new ContactFragment();
                         }
                         addFrag(contactFrag);
-                        getFragmentManager().beginTransaction().show(contactFrag).commit();
+                        getFragmentManager().beginTransaction().show(contactFrag).commit();*/
+                        MainActivity mainActivity=(MainActivity)getActivity();
+                        mainActivity.openBuddyActivity();
                         break;
                 }
             }

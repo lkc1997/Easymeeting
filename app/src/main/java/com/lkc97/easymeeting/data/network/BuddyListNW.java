@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class BuddyListNW {
+    public static boolean buddyListState=false;
     private String userName;
     private AVQuery<AVObject> query = new AVQuery<>("_Follower");
     private AVQuery<AVUser> followerQuery;

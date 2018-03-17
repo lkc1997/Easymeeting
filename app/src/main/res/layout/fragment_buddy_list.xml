@@ -18,6 +18,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </android.support.v4.widget.SwipeRefreshLayout>
-
+        <com.lkc97.easymeeting.ui.adapter.LetterView
+            android:id="@+id/activity_square_members_letterview"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 </LinearLayout>

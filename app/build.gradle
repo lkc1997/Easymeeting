@@ -51,10 +51,20 @@ dependencies {
     compile('cn.leancloud.android:avoscloud-search:v4.6.4@aar')
 
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
-    compile('cn.leancloud.android:chatkit:1.0.6')
+    compile project(":leancloudchatkit")
 
     compile 'com.github.stuxuhai:jpinyin:1.0'
+
 }
 dependencies {
     implementation 'com.android.support:support-v4:25.+'
+}
+dependencies {
+    implementation 'com.android.support:support-v4:25.+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
