@@ -39,6 +39,8 @@ dependencies {
     compile group: 'com.github.bumptech.glide', name: 'glide', version: '3.7.0'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:percent:25.3.1'
+    compile 'me.relex:circleindicator:1.2.2@aar'
 }
 dependencies {
     compile('com.android.support:support-v4:21.0.3')
@@ -54,6 +56,9 @@ dependencies {
     compile('cn.leancloud.android:chatkit:1.0.6')
 
     compile 'com.github.stuxuhai:jpinyin:1.0'
+}
+dependencies {
+    implementation 'com.android.support:support-v4:25.+'
 }
 dependencies {
     implementation 'com.android.support:support-v4:25.+'

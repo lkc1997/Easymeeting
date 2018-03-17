@@ -27,9 +27,10 @@ public class BottomNavigationFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
     private ConfFragment confFrag;
+    private MyConfFragment myconfFrag;
     private ContactFragment contactFrag;
+
     /*设置默认Fragment*/
     private void setDefaultFrag() {
 
@@ -57,7 +58,7 @@ public class BottomNavigationFragment extends Fragment {
     private void hideAllFrag() {
         hideFrag(confFrag);
         //hideFrag(topicFrag);
-        //hideFrag(newconFrag);
+        hideFrag(myconfFrag);
         hideFrag(contactFrag);
         //hideFrag(mineFrag);
     }
@@ -133,6 +134,14 @@ public class BottomNavigationFragment extends Fragment {
                         }
                         addFrag(confFrag);
                         getFragmentManager().beginTransaction().show(confFrag).commit();
+                        break;
+                    case 2:
+                        hideAllFrag();
+                        if(myconfFrag==null){
+                            myconfFrag = new MyConfFragment();
+                        }
+                        addFrag(myconfFrag);
+                        getFragmentManager().beginTransaction().show(myconfFrag).commit();
                         break;
                     case 3:
                         hideAllFrag();
