@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.adapter.LoopViewPager;
 import com.lkc97.easymeeting.ui.adapter.SamplePagerAdapter;
 
@@ -62,18 +64,81 @@ public class MyConfFragment extends Fragment {
         }
     }
 
+    private LoopViewPager viewPager;
+    private CircleIndicator indicator;
+    private TextView confList;
+    private TextView confCreate;
+    private TextView confValue;
+    private View view;
+    private MainActivity mainActivity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_conf, container, false);
-    }
-
-    @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        LoopViewPager viewPager = (LoopViewPager)view.findViewById(R.id.viewpager);
-        CircleIndicator indicator = (CircleIndicator) view.findViewById(R.id.indicator);
+        view = inflater.inflate(R.layout.fragment_my_conf, container, false);
+        viewPager = (LoopViewPager)view.findViewById(R.id.viewpager);
+        indicator = (CircleIndicator) view.findViewById(R.id.indicator);
+        confList = (TextView) view.findViewById(R.id.conf_list);
+        confCreate = (TextView) view.findViewById(R.id.conf_creat);
+        confValue = (TextView) view.findViewById(R.id.conf_value);
+        mainActivity=(MainActivity)getActivity();
         viewPager.setAdapter(new SamplePagerAdapter());
         indicator.setViewPager(viewPager);
+        confList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.conf_list:
+                        mainActivity.openClistActivity();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        confCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.conf_creat:
+                        mainActivity.openCcreateActivity();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        confValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.conf_value:
+                        mainActivity.openCvalueActivity();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        return view;
+    }
+
+
+    private void selectAdvocator(){
+        //点击广告进入页面
+        int value = viewPager.getCurrentItem();
+        switch (value){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
     }
 
 }

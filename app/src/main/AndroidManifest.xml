@@ -48,12 +48,16 @@
         <!-- LeacCloud end -->
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.common.BuddyActivity"
-            android:theme="@style/LCIMActivity.NoActionBar"/>
+        <activity
+            android:name=".ui.common.BuddyActivity"
+            android:theme="@style/LCIMActivity.NoActionBar" />
         <activity
             android:name=".ui.common.TestActivity"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.common.ClistActivity" />
+        <activity android:name=".ui.common.CcreateActivity" />
+        <activity android:name=".ui.common.CvalueActivity"></activity>
     </application>
 
 </manifest>
