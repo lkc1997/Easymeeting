@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.lkc97.easymeeting.R;
 
-public class ClistActivity extends AppCompatActivity {
+public class ConfListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clist);
+        setContentView(R.layout.activity_conf_list);
     }
 }

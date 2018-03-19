@@ -55,8 +55,8 @@
             android:name=".ui.common.TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.common.ClistActivity" />
-        <activity android:name=".ui.common.CcreateActivity" />
+        <activity android:name=".ui.common.ConfListActivity" />
+        <activity android:name=".ui.common.ConfCreateActivity" />
         <activity android:name=".ui.common.CvalueActivity"></activity>
     </application>
 

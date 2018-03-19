@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.lkc97.easymeeting.ui.common.ConfFragment">
+    tools:context="com.lkc97.easymeeting.ui.common.ConfViewFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/conf_recv"

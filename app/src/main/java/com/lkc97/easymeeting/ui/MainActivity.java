@@ -9,8 +9,8 @@ import com.lkc97.easymeeting.data.manager.LoginManager;
 import com.lkc97.easymeeting.data.network.BuddyListNW;
 import com.lkc97.easymeeting.ui.adapter.CustomUserProvider;
 import com.lkc97.easymeeting.ui.common.BuddyActivity;
-import com.lkc97.easymeeting.ui.common.CcreateActivity;
-import com.lkc97.easymeeting.ui.common.ClistActivity;
+import com.lkc97.easymeeting.ui.common.ConfCreateActivity;
+import com.lkc97.easymeeting.ui.common.ConfListActivity;
 import com.lkc97.easymeeting.ui.common.CvalueActivity;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void openClistActivity(){
-        Intent loginIntent=new Intent(MainActivity.this, ClistActivity.class);
+        Intent loginIntent=new Intent(MainActivity.this, ConfListActivity.class);
         startActivity(loginIntent);
     }
 
     public void openCcreateActivity(){
-        Intent loginIntent=new Intent(MainActivity.this, CcreateActivity.class);
+        Intent loginIntent=new Intent(MainActivity.this, ConfCreateActivity.class);
         startActivity(loginIntent);
     }
 

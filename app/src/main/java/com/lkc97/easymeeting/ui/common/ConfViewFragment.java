@@ -21,7 +21,7 @@ import java.util.Random;
  * Created by admin on 2018/3/3.
  */
 
-public class ConfFragment extends Fragment {
+public class ConfViewFragment extends Fragment {
 
     private View conf_frag;
     private RecyclerView conf_recv;
