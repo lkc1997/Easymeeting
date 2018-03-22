@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.common.ConfCreateActivity">
-
-    <TextView
+    <EditText
+        android:id="@+id/conf_name_edtxt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:hint="会议名"/>
+    <EditText
+        android:id="@+id/conf_place_edtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="会议地点"/>
+    <EditText
+        android:id="@+id/conf_time_edtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="会议时间"/>
+    <Button
+        android:id="@+id/info_push_btn"
+        android:onClick="sendConfInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"/>
 
-        android:text="创建会议" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -11,7 +11,7 @@ import com.lkc97.easymeeting.ui.adapter.CustomUserProvider;
 import com.lkc97.easymeeting.ui.common.BuddyActivity;
 import com.lkc97.easymeeting.ui.common.ConfCreateActivity;
 import com.lkc97.easymeeting.ui.common.ConfListActivity;
-import com.lkc97.easymeeting.ui.common.CvalueActivity;
+import com.lkc97.easymeeting.ui.common.ConfValueActivity;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity{
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void openCvalueActivity(){
-        Intent loginIntent=new Intent(MainActivity.this, CvalueActivity.class);
+        Intent loginIntent=new Intent(MainActivity.this, ConfValueActivity.class);
         startActivity(loginIntent);
     }
 }

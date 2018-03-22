@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lkc97.easymeeting.ui.common.CvalueActivity">
+    tools:context="com.lkc97.easymeeting.ui.common.ConfValueActivity">
 
     <TextView
         android:layout_width="match_parent"

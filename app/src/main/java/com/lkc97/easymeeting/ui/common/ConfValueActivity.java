@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.lkc97.easymeeting.R;
 
-public class CvalueActivity extends AppCompatActivity {
+public class ConfValueActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cvalue);
+        setContentView(R.layout.activity_conf_value);
     }
 }
