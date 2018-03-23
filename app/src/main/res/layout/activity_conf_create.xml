@@ -22,6 +22,12 @@
         android:layout_height="wrap_content"
         android:hint="会议时间"/>
     <Button
+        android:id="@+id/conf_image_btn"
+        android:onClick="selectConfImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择图片"/>
+    <Button
         android:id="@+id/info_push_btn"
         android:onClick="sendConfInfo"
         android:layout_width="wrap_content"
