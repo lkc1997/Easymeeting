@@ -30,6 +30,7 @@ public class MyApplication extends Application {
         // 开启调试日志(网络请求、错误消息等信息输出到 IDE 的日志窗口)
         AVOSCloud.setDebugLogEnabled(true);
         //初始化chatkit
+        LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
         LCChatKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY);
         AVIMClient.setAutoOpen(true);
         PushService.setDefaultPushCallback(this, BuddyActivity.class);

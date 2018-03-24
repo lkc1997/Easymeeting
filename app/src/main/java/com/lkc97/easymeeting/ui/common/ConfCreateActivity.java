@@ -12,22 +12,29 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
 import com.bigkoo.pickerview.TimePickerView;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.Date;
+import java.util.HashMap;
 
 public class ConfCreateActivity extends AppCompatActivity {
     public static final int CHOOSE_PHOTO=2;
-    File imageSelected;
+    File imageSelected=null;
+    AVFile confImage=null;
     private EditText confName;
     private EditText confPlace;
     private EditText confTime;
@@ -48,15 +55,27 @@ public class ConfCreateActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "请正确填写信息",
                     Toast.LENGTH_SHORT).show();
         }
+        else if(imageSelected==null){
+            Toast.makeText(getApplicationContext(), "请选择文件",
+                    Toast.LENGTH_SHORT).show();
+        }
         else{
+
             AVObject conference = new AVObject("Conference");// 构建对象
+            try {
+                confImage= AVFile.withAbsoluteLocalPath(imageSelected.getName(), imageSelected.getPath());
+            }catch(IOException e){
+                Log.e("Easymeeting","选择文件失败");
+            }
             conference.put("confName", sConfName);
             conference.put("confPlace", sConfPlace);
             conference.put("confTime", sConfTime);
+           // conference.put("image", confImage);
             conference.saveInBackground();// 保存到服务端
             Toast.makeText(getApplicationContext(), "成功申请会议",
                     Toast.LENGTH_SHORT).show();
             finish();
+
         }
     }
     public void selectConfImage(View v){
@@ -70,7 +89,6 @@ public class ConfCreateActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == CHOOSE_PHOTO) {
                 Uri uri = data.getData();
