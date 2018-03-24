@@ -6,19 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.MainActivity">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
     <FrameLayout
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_weight="2.5"/>
     <fragment
         android:id="@+id/button_navigation_fragment"
         android:name="com.lkc97.easymeeting.ui.common.BottomNavigationFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="20"/>
 </LinearLayout>
