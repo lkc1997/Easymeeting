@@ -5,10 +5,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
+import com.avos.avoscloud.GetCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.adapter.ConfAdapter;
 import com.lkc97.easymeeting.ui.adapter.ConfBean;
@@ -46,7 +53,7 @@ public class ConfViewFragment extends Fragment {
     }
 
     private void showData() {
-        ConfBean[] confBean ={
+        /*ConfBean[] confBean ={
                 new ConfBean("会议1",R.drawable.test,"会议简介"),
                 new ConfBean("会议2",R.drawable.test,"会议简介"),
                 new ConfBean("会议3",R.drawable.test,"会议简介"),
@@ -59,9 +66,27 @@ public class ConfViewFragment extends Fragment {
             Random random = new Random();
             int index = random.nextInt(confBean.length);
             dataList.add(confBean[index]);
-        }
-        adapter=new ConfAdapter(conf_frag.getContext(),dataList);
-        conf_recv.setAdapter(adapter);
-    }
+        }*/
+        loadConf();
 
+    }
+    private void loadConf(){
+        AVQuery<AVObject> query = new AVQuery<>("Conference");
+        query.whereEqualTo("checkState", true);
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                Log.d("Easymeeting","confList size ="+list.size());
+                AVObject conference;
+                AVFile file;
+                for(int i=0;i<list.size();i++){
+                    conference=list.get(i);
+                    file=conference.getAVFile("image");
+                    dataList.add(new ConfBean(conference.getString("confName"),file.getUrl(),conference.getString("confBriefIndroduction")));
+                }
+                adapter=new ConfAdapter(conf_frag.getContext(),dataList);
+                conf_recv.setAdapter(adapter);
+            }
+        });
+    }
 }

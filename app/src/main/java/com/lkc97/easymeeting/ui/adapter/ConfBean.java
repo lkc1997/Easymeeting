@@ -9,10 +9,11 @@ public class ConfBean {
     private String name;
     private int imageId;
     private String content;
+    private String imageUrl;
 
-    public ConfBean(String name,int imageId,String content){
+    public ConfBean(String name,String imageUrl,String content){
         this.name=name;
-        this.imageId=imageId;
+        this.imageUrl=imageUrl;
         this.content=content;
     }
 
@@ -22,6 +23,10 @@ public class ConfBean {
 
     public int getImageId(){
         return imageId;
+    }
+
+    public String getImageUrl(){
+        return imageUrl;
     }
 
     public String getContent() {

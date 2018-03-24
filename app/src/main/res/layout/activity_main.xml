@@ -9,14 +9,12 @@
     <FrameLayout
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2.50"/>
+        android:layout_height="wrap_content"/>
     <fragment
         android:id="@+id/button_navigation_fragment"
         android:name="com.lkc97.easymeeting.ui.common.BottomNavigationFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="20"/>
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

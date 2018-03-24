@@ -50,12 +50,13 @@ public class CustomUserProvider implements LCChatProfileProvider {
                 Log.d("Easymeeting","currentuser="+currentUser.getUsername());
                 Log.d("Easymeeting","buddy size="+avObjects.size());
                 AVUser follower;
+                AVFile file;
                 //添加自己
                 partUsers.add(new LCChatKitUser(currentUser.getUsername(), currentUser.getUsername()+"(自己)", currentUser.getAVFile("avatar").getUrl()));
                 //加载好友
                 for(int i = 0 ; i < avObjects.size() ; i++) {
                     follower=avObjects.get(i);
-                    AVFile file=follower.getAVFile("avatar");
+                    file=follower.getAVFile("avatar");
                     partUsers.add(new LCChatKitUser(follower.getUsername(), follower.getUsername(), file.getUrl()));
                     Log.d("Easymeeting","list add "+avObjects.get(0).get("username"));
                 }

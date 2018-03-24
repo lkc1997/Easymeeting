@@ -59,7 +59,7 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
         ConfBean confBean = dataList.get(position);
         holder.confName.setText(confBean.getName());
         holder.content.setText(dataList.get(position).getContent());
-        Glide.with(context).load(confBean.getImageId()).into(holder.confImage);
+        Glide.with(context).load(confBean.getImageUrl()).into(holder.confImage);
     }
 
     @Override
