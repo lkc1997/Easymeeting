@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.bigkoo.pickerview.TimePickerView;
 import com.lkc97.easymeeting.R;
@@ -75,6 +76,7 @@ public class ConfCreateActivity extends AppCompatActivity {
             conference.put("confPlace", sConfPlace);
             conference.put("confTime", sConfTime);
             conference.put("image", confImage);
+            conference.put("creator", AVUser.getCurrentUser().getUsername());
             conference.saveInBackground();// 保存到服务端
             Toast.makeText(getApplicationContext(), "成功申请会议",
                     Toast.LENGTH_SHORT).show();
