@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lkc97.easymeeting.ui.common.ConfListActivity">
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/conf_list_recv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:gravity="center"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
-        android:text="会议列表" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
