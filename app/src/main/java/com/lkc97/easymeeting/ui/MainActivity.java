@@ -2,6 +2,7 @@ package com.lkc97.easymeeting.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lkc97.easymeeting.R;
@@ -19,6 +20,11 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //隐藏原始标题栏
+        ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.hide();
+        }
         //判断是否有账户缓存
         LoginManager mLoginmanager=new LoginManager();
         if(!mLoginmanager.checkLoginState()){

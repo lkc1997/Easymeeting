@@ -35,6 +35,7 @@ public class ConfViewFragment extends Fragment {
     private List<ConfBean> dataList = new ArrayList<>();
     private Context context;
     private ConfAdapter adapter;
+    private Boolean confLoadState=false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +68,10 @@ public class ConfViewFragment extends Fragment {
             int index = random.nextInt(confBean.length);
             dataList.add(confBean[index]);
         }*/
-        loadConf();
+        if(!confLoadState) {
+            loadConf();
+            confLoadState=true;
+        }
 
     }
     private void loadConf(){
