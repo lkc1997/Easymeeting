@@ -1,13 +1,16 @@
 package com.lkc97.easymeeting.ui.common;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -35,6 +38,7 @@ public class ConfCreateActivity extends AppCompatActivity {
     public static final int CHOOSE_PHOTO=2;
     File imageSelected=null;
     AVFile confImage=null;
+    String imageAbsolutePath=null;
     private EditText confName;
     private EditText confPlace;
     private EditText confTime;
@@ -55,27 +59,26 @@ public class ConfCreateActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "请正确填写信息",
                     Toast.LENGTH_SHORT).show();
         }
-        else if(imageSelected==null){
+        else if(imageAbsolutePath==null){
             Toast.makeText(getApplicationContext(), "请选择文件",
                     Toast.LENGTH_SHORT).show();
         }
         else{
-
             AVObject conference = new AVObject("Conference");// 构建对象
             try {
-                confImage= AVFile.withAbsoluteLocalPath(imageSelected.getName(), imageSelected.getPath());
+                confImage= AVFile.withAbsoluteLocalPath(sConfName+".jpg", imageAbsolutePath);
             }catch(IOException e){
-                Log.e("Easymeeting","选择文件失败");
+                //Log.e("Easymeeting",e.getMessage());
+                e.printStackTrace();
             }
             conference.put("confName", sConfName);
             conference.put("confPlace", sConfPlace);
             conference.put("confTime", sConfTime);
-           // conference.put("image", confImage);
+            conference.put("image", confImage);
             conference.saveInBackground();// 保存到服务端
             Toast.makeText(getApplicationContext(), "成功申请会议",
                     Toast.LENGTH_SHORT).show();
             finish();
-
         }
     }
     public void selectConfImage(View v){
@@ -83,18 +86,71 @@ public class ConfCreateActivity extends AppCompatActivity {
     }
     public void findImage(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");//设置类型，我这里是任意类型，任意后缀的可以这样写。
+        intent.setType("image/*");//设置类型，任意后缀的可以这样写。
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent,CHOOSE_PHOTO);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == CHOOSE_PHOTO) {
-                Uri uri = data.getData();
-                imageSelected = new File(uri.toString());
-                Toast.makeText(this, "选择图片：" + imageSelected.getName(), Toast.LENGTH_SHORT).show();
+        switch (requestCode){
+            case CHOOSE_PHOTO:
+                if(resultCode==RESULT_OK){
+                    if(Build.VERSION.SDK_INT>=19){
+                        handleImageOnKitKat(data);
+                    }
+                    else{
+                        handleImageBeforeKitKat(data);
+                    }
+                }
+                Toast.makeText(getApplicationContext(), "选择文件"+imageAbsolutePath,
+                        Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+    }
+    @TargetApi(19)
+    private void handleImageOnKitKat(Intent data){
+        String imagePath=null;
+        Uri uri=data.getData();
+        if(DocumentsContract.isDocumentUri(this,uri)){
+            String docId=DocumentsContract.getDocumentId(uri);
+            if("com.android.providers.media.documents".equals(uri.getAuthority())){
+                //如果是document类型的Uri
+                String id=docId.split(":")[1];
+                String selection=MediaStore.Images.Media._ID+"="+id;
+                imagePath=getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
+            }
+            else if("com.android.providers.download.documents".equals(uri.getAuthority())){
+                Uri contentUri= ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),Long.valueOf(docId));
+                imagePath=getImagePath(contentUri,null);
             }
         }
+        else if("content".equalsIgnoreCase(uri.getScheme())){
+            //如果是content类型的Uri
+            imagePath=getImagePath(uri,null);
+        }
+        else if("file".equalsIgnoreCase(uri.getScheme())){
+            //如果是file类型的Uri
+            imagePath=uri.getPath();
+        }
+        imageAbsolutePath=imagePath;
+    }
+    private void handleImageBeforeKitKat(Intent data){
+        Uri uri=data.getData();
+        String imagePath=getImagePath(uri,null);
+        imageAbsolutePath=imagePath;
+    }
+    private String getImagePath(Uri uri,String selection){
+        String path=null;
+        //通过Uri和selection来获取真实的图片路径
+        Cursor cursor=getContentResolver().query(uri,null,selection,null,null);
+        if(cursor!=null){
+            if(cursor.moveToFirst()){
+                path=cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            }
+            cursor.close();
+        }
+        return path;
     }
 }
