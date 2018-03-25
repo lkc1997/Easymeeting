@@ -32,9 +32,8 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
 
             super(itemView);
             confName = (TextView) itemView.findViewById(R.id.conf_list_name);
-            confImage = (ImageView) itemView.findViewById(R.id.conf_list_img);
+            //confImage = (ImageView) itemView.findViewById(R.id.conf_list_img);
             confState = (TextView) itemView.findViewById(R.id.conf_list_state);
-
         }
     }
 
@@ -55,7 +54,7 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
         ConfListBean conflistBean = dataList.get(position);
         holder.confName.setText(conflistBean.getName());
         holder.confState.setText(dataList.get(position).getContent());
-        Glide.with(context).load(conflistBean.getImageId()).into(holder.confImage);
+        //Glide.with(context).load(conflistBean.getImageId()).into(holder.confImage);
     }
 
     @Override
