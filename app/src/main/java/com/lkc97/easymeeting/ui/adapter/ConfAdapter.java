@@ -24,7 +24,7 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
     private List<ConfBean> dataList;
 
     static class ConfViewHolder extends RecyclerView.ViewHolder {
-
+        View confView;
         CardView cardView;
         TextView confName;
         ImageView confImage;
@@ -33,6 +33,7 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
         public ConfViewHolder(View itemView) {
 
             super(itemView);
+            confView=itemView;
             cardView = (CardView) itemView;
             confName = (TextView) itemView.findViewById(R.id.conf_name);
             confImage = (ImageView) itemView.findViewById(R.id.conf_image);
@@ -48,10 +49,20 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
 
     @Override
     public ConfAdapter.ConfViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view=LayoutInflater.from(context).inflate(R.layout.conf_item, parent, false);
+        final ConfAdapter.ConfViewHolder holder=new ConfAdapter.ConfViewHolder(view);
+        holder.confView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                int position=holder.getAdapterPosition();
+                ConfBean conference=dataList.get(position);
+
+            }
+        });
         if(context == null){
             context = parent.getContext();
         }
-        return new ConfAdapter.ConfViewHolder(LayoutInflater.from(context).inflate(R.layout.conf_item, parent, false));
+        return holder;
     }
 
     @Override
