@@ -29,6 +29,7 @@ public class ConfListActivity extends AppCompatActivity {
         showData();
         adapter=new ConfListAdapter(dataList);
         conf_list_recv.setAdapter(adapter);
+        conf_list_recv.addItemDecoration(new MyDecoration(this, MyDecoration.VERTICAL_LIST,R.drawable.divider));
     }
 
     private void innitView() {
@@ -39,15 +40,15 @@ public class ConfListActivity extends AppCompatActivity {
 
     private void showData() {
         ConfListBean[] conflistBean ={
-                new ConfListBean("会议1",R.drawable.test,"已参加"),
-                new ConfListBean("会议2",R.drawable.test,"待审核"),
-                new ConfListBean("会议3",R.drawable.test,"过期会议"),
-                new ConfListBean("会议4",R.drawable.test,"已创建"),
-                new ConfListBean("会议5",R.drawable.test,"已签到"),
-                new ConfListBean("会议6",R.drawable.test,"3天后")
+                new ConfListBean("会议1","已参加"),
+                new ConfListBean("会议2","待审核"),
+                new ConfListBean("会议3","过期会议"),
+                new ConfListBean("会议4","已创建"),
+                new ConfListBean("会议5","已签到"),
+                new ConfListBean("会议6","3天后")
         };
 
-        for (int i=0;i<10;i++){
+        for (int i=0;i<50;i++){
             Random random = new Random();
             int index = random.nextInt(conflistBean.length);
             dataList.add(conflistBean[index]);

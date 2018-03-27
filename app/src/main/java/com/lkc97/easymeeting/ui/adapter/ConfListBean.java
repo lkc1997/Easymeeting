@@ -6,21 +6,15 @@ package com.lkc97.easymeeting.ui.adapter;
 
 public class ConfListBean {
     private String name;
-    private int imageId;
     private String state;
 
-    public ConfListBean(String name,int imageId,String state){
+    public ConfListBean(String name,String state){
         this.name=name;
-        this.imageId=imageId;
         this.state=state;
     }
 
     public String getName(){
         return name;
-    }
-
-    public int getImageId(){
-        return imageId;
     }
 
     public String getContent() {
