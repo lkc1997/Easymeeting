@@ -1,7 +1,7 @@
 package com.lkc97.easymeeting.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
+import com.lkc97.easymeeting.ui.common.ConfDetailActivity;
 
 import java.util.List;
 
@@ -24,7 +24,6 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
 
     private Context context;
     private List<ConfBean> dataList;
-    private MainActivity mainActivity;
     static class ConfViewHolder extends RecyclerView.ViewHolder {
         View confView;
         CardView cardView;
@@ -56,9 +55,10 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
             @Override
             public void onClick(View v){
                 int position=holder.getAdapterPosition();
-               // ConfBean conference=dataList.get(position);
+                ConfBean conference=dataList.get(position);
+                Intent loginIntent=new Intent(context, ConfDetailActivity.class);
+                context.startActivity(loginIntent);
 
-               // mainActivity.openConfDetailActivity();
             }
         });
         if(context == null){

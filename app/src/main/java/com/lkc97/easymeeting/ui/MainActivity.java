@@ -61,8 +61,4 @@ public class MainActivity extends AppCompatActivity{
         Intent loginIntent=new Intent(MainActivity.this, ConfValueActivity.class);
         startActivity(loginIntent);
     }
-    public void openConfDetailActivity(){
-        Intent loginIntent=new Intent(MainActivity.this, ConfListActivity.class);
-        startActivity(loginIntent);
-    }
 }
