@@ -82,7 +82,7 @@ public class ConfListActivity extends AppCompatActivity {
                         state="今日开始";
                     else
                         state="已过期";
-                    dataList.add(new ConfListBean(conference.getString("confName"),state));
+                    dataList.add(new ConfListBean(conference.getString("confName"),state,conference));
                 }
                 adapter=new ConfListAdapter(dataList);
                 conf_list_recv.setAdapter(adapter);

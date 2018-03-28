@@ -1,5 +1,7 @@
 package com.lkc97.easymeeting.ui.adapter;
 
+import com.avos.avoscloud.AVObject;
+
 /**
  * Created by admin on 2018/3/24.
  */
@@ -7,10 +9,11 @@ package com.lkc97.easymeeting.ui.adapter;
 public class ConfListBean {
     private String name;
     private String state;
-
-    public ConfListBean(String name,String state){
+    private AVObject conference;
+    public ConfListBean(String name,String state,AVObject conference){
         this.name=name;
         this.state=state;
+        this.conference=conference;
     }
 
     public String getName(){
@@ -25,4 +28,7 @@ public class ConfListBean {
         this.name = name;
     }
 
+    public AVObject getConference(){
+        return conference;
+    }
 }

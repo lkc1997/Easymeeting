@@ -1,8 +1,12 @@
 package com.lkc97.easymeeting.ui.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.DeleteCallback;
+import com.avos.avoscloud.FindCallback;
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.ui.common.ConfDetailActivity;
 
 import java.util.List;
 
@@ -53,7 +63,43 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
         holder.quitBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(v.getContext(),"退出会议",Toast.LENGTH_SHORT).show();
+                int position=holder.getAdapterPosition();
+                final ConfListBean conference=dataList.get(position);
+                new AlertDialog.Builder(context)
+                        .setTitle("确认")
+                        .setMessage("确定要退出吗？")
+                        .setNegativeButton("否", null)
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AVQuery<AVObject> query = new AVQuery<>("FollowedConference");
+                                query.whereEqualTo("conference", conference.getConference());
+                                query.findInBackground(new FindCallback<AVObject>() {
+                                    @Override
+                                    public void done(List<AVObject> list, AVException e) {
+                                        list.get(0).deleteInBackground(new DeleteCallback() {
+                                            @Override
+                                            public void done(AVException e) {
+                                                if(e==null)
+                                                    Log.d("Easymeeting","成功删除");
+                                                else
+                                                    Log.e("Easymeeting",e.getMessage());
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        })
+                        .show();
+            }
+        });
+        holder.confListView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                int position=holder.getAdapterPosition();
+                ConfListBean conference=dataList.get(position);
+                Intent loginIntent=new Intent(context, ConfDetailActivity.class);
+                context.startActivity(loginIntent);
             }
         });
         return holder;
@@ -70,4 +116,5 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
     public int getItemCount() {
         return dataList.size();
     }
+
 }
