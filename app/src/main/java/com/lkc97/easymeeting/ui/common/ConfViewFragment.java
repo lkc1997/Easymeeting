@@ -29,7 +29,6 @@ import java.util.Random;
  */
 
 public class ConfViewFragment extends Fragment {
-
     private View conf_frag;
     private RecyclerView conf_recv;
     private List<ConfBean> dataList = new ArrayList<>();

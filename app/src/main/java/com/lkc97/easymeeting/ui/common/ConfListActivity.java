@@ -58,7 +58,6 @@ public class ConfListActivity extends AppCompatActivity {
             dataList.add(conflistBean[index]);
         }*/
         loadFollowedConference();
-
     }
     private void loadFollowedConference(){
         final Date data=new Date();
@@ -87,7 +86,6 @@ public class ConfListActivity extends AppCompatActivity {
                 }
                 adapter=new ConfListAdapter(dataList);
                 conf_list_recv.setAdapter(adapter);
-
             }
         });
     }

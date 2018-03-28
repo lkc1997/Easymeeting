@@ -17,18 +17,15 @@ import java.util.List;
  */
 
 public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfListViewHolder>{
-
     private Context context;
     private List<ConfListBean> dataList;
 
     static class ConfListViewHolder extends RecyclerView.ViewHolder {
-
         TextView confName;
         ImageView confImage;
         TextView confState;
 
         public ConfListViewHolder(View itemView) {
-
             super(itemView);
             confName = (TextView) itemView.findViewById(R.id.conf_list_name);
             confState = (TextView) itemView.findViewById(R.id.conf_list_state);

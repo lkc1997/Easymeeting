@@ -1,6 +1,7 @@
 package com.lkc97.easymeeting.ui.adapter;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.ui.MainActivity;
 
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
 
     private Context context;
     private List<ConfBean> dataList;
-
+    private MainActivity mainActivity;
     static class ConfViewHolder extends RecyclerView.ViewHolder {
         View confView;
         CardView cardView;
@@ -31,7 +33,6 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
         TextView content;
 
         public ConfViewHolder(View itemView) {
-
             super(itemView);
             confView=itemView;
             cardView = (CardView) itemView;
@@ -50,13 +51,14 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
     @Override
     public ConfAdapter.ConfViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=LayoutInflater.from(context).inflate(R.layout.conf_item, parent, false);
-        final ConfAdapter.ConfViewHolder holder=new ConfAdapter.ConfViewHolder(view);
+        final ConfViewHolder holder=new ConfViewHolder(view);
         holder.confView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 int position=holder.getAdapterPosition();
-                ConfBean conference=dataList.get(position);
+               // ConfBean conference=dataList.get(position);
 
+               // mainActivity.openConfDetailActivity();
             }
         });
         if(context == null){

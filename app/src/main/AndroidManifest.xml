@@ -57,7 +57,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.common.ConfListActivity" />
         <activity android:name=".ui.common.ConfCreateActivity" />
-        <activity android:name=".ui.common.ConfValueActivity"></activity>
+        <activity android:name=".ui.common.ConfValueActivity" />
+        <activity android:name=".ui.common.ConfDetailActivity"></activity>
     </application>
 
 </manifest>
