@@ -33,7 +33,7 @@ public class ConfListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conf_list);
         innitView();
-        showData();
+        loadFollowedConference();
         conf_list_recv.addItemDecoration(new MyDecoration(this, MyDecoration.VERTICAL_LIST,R.drawable.divider));
     }
 
@@ -43,22 +43,6 @@ public class ConfListActivity extends AppCompatActivity {
         conf_list_recv.setLayoutManager(layoutManager);
     }
 
-    private void showData() {
-        /*ConfListBean[] conflistBean ={
-                new ConfListBean("会议1","已参加"),
-                new ConfListBean("会议2","待审核"),
-                new ConfListBean("会议3","过期会议"),
-                new ConfListBean("会议4","已创建"),
-                new ConfListBean("会议5","已签到"),
-                new ConfListBean("会议6","3天后")
-        };
-        for (int i=0;i<50;i++){
-            Random random = new Random();
-            int index = random.nextInt(conflistBean.length);
-            dataList.add(conflistBean[index]);
-        }*/
-        loadFollowedConference();
-    }
     private void loadFollowedConference(){
         final Date data=new Date();
         AVQuery<AVObject> query = new AVQuery<>("FollowedConference");
