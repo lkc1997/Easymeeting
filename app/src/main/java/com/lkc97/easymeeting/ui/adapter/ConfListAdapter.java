@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -97,9 +98,13 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
             @Override
             public void onClick(View v){
                 int position=holder.getAdapterPosition();
-                ConfListBean conference=dataList.get(position);
-                Intent loginIntent=new Intent(context, ConfDetailActivity.class);
-                context.startActivity(loginIntent);
+                AVObject conf=dataList.get(position).getConference();
+                Intent intent=new Intent(context, ConfDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("objectId",conf.getObjectId());
+                Log.d("Easymeeting",conf.getObjectId());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
         return holder;

@@ -2,13 +2,17 @@ package com.lkc97.easymeeting.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.avos.avoscloud.AVObject;
 import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
@@ -55,9 +59,13 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
             @Override
             public void onClick(View v){
                 int position=holder.getAdapterPosition();
-                ConfBean conference=dataList.get(position);
-                Intent loginIntent=new Intent(context, ConfDetailActivity.class);
-                context.startActivity(loginIntent);
+                AVObject conf=dataList.get(position).getConference();
+                Intent intent=new Intent(context, ConfDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("objectId",conf.getObjectId());
+               // Log.d("Easymeeting",conf.getObjectId());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
 
             }
         });
