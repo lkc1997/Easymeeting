@@ -11,10 +11,12 @@ import android.view.View;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.DeleteCallback;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.LogUtil;
+import com.avos.avoscloud.SaveCallback;
 import com.lkc97.easymeeting.R;
 
 import java.util.List;
@@ -68,5 +70,12 @@ public class ConfDetailActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+    public void confParticipate(View v){
+        AVObject followedCoference=new AVObject("FollowedConference");
+        AVUser mine=AVUser.getCurrentUser();
+        followedCoference.put("follower", mine);
+        followedCoference.put("conference",conference);
+        followedCoference.saveInBackground();
     }
 }
