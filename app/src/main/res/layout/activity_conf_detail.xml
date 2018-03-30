@@ -9,21 +9,59 @@
 
     <ScrollView
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_margin="10dp">
 
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical">
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"/>
-
-            <TextView
+                android:id="@+id/conf_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="40sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/material_brown_700"/>
+            <TextView
+                android:id="@+id/conf_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="会议时间："
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/conf_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="城市："
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/conf_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="会议地点："
+                android:textSize="15sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/material_brown_700"/>
+            <ImageView
+                android:id="@+id/conf_img"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:src="@drawable/test"/>
+            <TextView
+                android:id="@+id/conf_brief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="各位同仁大家好："
+                android:textSize="15sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/material_brown_700"/>
             <Button
                 android:id="@+id/conf_participate_detail_activity_btn"
                 android:onClick="confParticipate"
