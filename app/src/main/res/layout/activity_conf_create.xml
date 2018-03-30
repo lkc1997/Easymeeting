@@ -6,32 +6,129 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.common.ConfCreateActivity">
-    <EditText
-        android:id="@+id/conf_name_edtxt"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="会议名"/>
-    <EditText
-        android:id="@+id/conf_place_edtxt"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/confname"
+            android:scaleType="centerCrop"/>
+        <EditText
+            android:id="@+id/conf_name_edtxt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="6"
+            android:hint="请输入会议名称" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="会议地点"/>
-    <EditText
-        android:id="@+id/conf_time_edtxt"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/conf_place_img"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/place"
+            android:scaleType="centerCrop"/>
+        <Button
+            android:id="@+id/conf_placeJsonData_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="7"
+            android:hint="请先点击图标加载数据，再继续选择会议地点" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="会议时间"/>
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/dateunclk"/>
+        <Button
+            android:id="@+id/conf_date_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="7"
+            android:hint="会议日期请选择"
+            android:gravity="right" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/arrow"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/time"/>
+        <Button
+            android:id="@+id/conf_starttime_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="7"
+            android:hint="会议开始时间请选择"
+            android:gravity="right" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/arrow"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/time"/>
+        <Button
+            android:id="@+id/conf_endtime_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="7"
+            android:hint="会议结束时间请选择"
+            android:gravity="right" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/arrow"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+
     <Button
         android:id="@+id/conf_image_btn"
         android:onClick="selectConfImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="选择图片"/>
+
     <Button
         android:id="@+id/info_push_btn"
-        android:onClick="sendConfInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="提交"/>
+        android:onClick="sendConfInfo"
+        android:text="提交" />
 
 </LinearLayout>

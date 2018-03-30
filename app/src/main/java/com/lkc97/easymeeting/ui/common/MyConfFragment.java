@@ -23,7 +23,7 @@ import me.relex.circleindicator.CircleIndicator;
  * Use the {@link MyConfFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyConfFragment extends Fragment {
+public class MyConfFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,45 +84,27 @@ public class MyConfFragment extends Fragment {
         mainActivity=(MainActivity)getActivity();
         viewPager.setAdapter(new SamplePagerAdapter());
         indicator.setViewPager(viewPager);
-        confList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.conf_list:
-                        mainActivity.openClistActivity();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-        confCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.conf_creat:
-                        mainActivity.openCcreateActivity();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-        confValue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.conf_value:
-                        mainActivity.openCvalueActivity();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
+        confList.setOnClickListener(this);
+        confCreate.setOnClickListener(this);
+        confValue.setOnClickListener(this);
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.conf_list:
+                mainActivity.openClistActivity();
+                break;
+            case R.id.conf_creat:
+                mainActivity.openCcreateActivity();
+                break;
+            case R.id.conf_value:
+                mainActivity.openCvalueActivity();
+            default:
+                break;
+        }
+    }
 
     private void selectAdvocator(){
         //点击广告进入页面

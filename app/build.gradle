@@ -59,7 +59,8 @@ dependencies {
 
     compile 'com.github.stuxuhai:jpinyin:1.0'
 
-    compile 'com.contrarywind:Android-PickerView:3.2.7'
+    compile 'com.contrarywind:Android-PickerView:4.1.0'
+    compile 'com.google.code.gson:gson:2.7'
 }
 dependencies {
     implementation 'com.android.support:support-v4:25.+'
