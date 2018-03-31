@@ -30,7 +30,7 @@ public class BottomNavigationFragment extends Fragment {
 
     private ConfViewFragment confFrag;
     private MyConfFragment myconfFrag;
-    private ContactFragment contactFrag;
+    private MineFragment mineFrag;
 
     /*设置默认Fragment*/
     private void setDefaultFrag() {
@@ -60,8 +60,7 @@ public class BottomNavigationFragment extends Fragment {
         hideFrag(confFrag);
         //hideFrag(topicFrag);
         hideFrag(myconfFrag);
-        hideFrag(contactFrag);
-        //hideFrag(mineFrag);
+        hideFrag(mineFrag);
     }
 
     /*隐藏frag*/
@@ -116,9 +115,9 @@ public class BottomNavigationFragment extends Fragment {
 
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.conf, "发现").setActiveColorResource(R.color.material_orange_A200))
-                .addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
+                //.addItem(new BottomNavigationItem(R.drawable.topic, "话题").setActiveColorResource(R.color.material_green_500))
                 .addItem(new BottomNavigationItem(R.drawable.newcon, "会议").setActiveColorResource(R.color.material_blue_A200))
-                .addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
+                //.addItem(new BottomNavigationItem(R.drawable.friend, "好友").setActiveColorResource(R.color.material_brown_500))
                 .addItem(new BottomNavigationItem(R.drawable.mine, "我").setActiveColorResource(R.color.material_blue_grey_500))
                 .setFirstSelectedPosition(0)
                 .initialise();
@@ -136,7 +135,7 @@ public class BottomNavigationFragment extends Fragment {
                         addFrag(confFrag);
                         getFragmentManager().beginTransaction().show(confFrag).commit();
                         break;
-                    case 2:
+                    case 1:
                         hideAllFrag();
                         if(myconfFrag==null){
                             myconfFrag = new MyConfFragment();
@@ -144,15 +143,23 @@ public class BottomNavigationFragment extends Fragment {
                         addFrag(myconfFrag);
                         getFragmentManager().beginTransaction().show(myconfFrag).commit();
                         break;
-                    case 3:
+                    /*case 3:*/
                         /*hideAllFrag();
                         if (contactFrag== null) {
                             contactFrag = new ContactFragment();
                         }
                         addFrag(contactFrag);
                         getFragmentManager().beginTransaction().show(contactFrag).commit();*/
-                        MainActivity mainActivity=(MainActivity)getActivity();
+                       /* MainActivity mainActivity=(MainActivity)getActivity();
                         mainActivity.openBuddyActivity();
+                        break;*/
+                    case 2:
+                        hideAllFrag();
+                        if(mineFrag==null){
+                            mineFrag = new MineFragment();
+                        }
+                        addFrag(mineFrag);
+                        getFragmentManager().beginTransaction().show(mineFrag).commit();
                         break;
                 }
             }

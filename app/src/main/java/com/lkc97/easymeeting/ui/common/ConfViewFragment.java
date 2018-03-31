@@ -86,7 +86,6 @@ public class ConfViewFragment extends Fragment {
             loadConf();
             confLoadState=true;
         }
-
     }
     private void loadConf(){
         AVQuery<AVObject> query = new AVQuery<>("Conference");
@@ -113,7 +112,6 @@ public class ConfViewFragment extends Fragment {
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                //Log.d("Easymeeting","confList size ="+list.size());
                 AVObject conference;
                 AVFile file;
                 for(int i=0;i<list.size();i++){
