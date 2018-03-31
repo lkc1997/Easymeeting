@@ -1,7 +1,6 @@
 package com.lkc97.easymeeting.ui.common;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,7 +82,7 @@ public class ConfDetailActivity extends AppCompatActivity {
                 .show();
     }
     public void confParticipate(View v){
-        AVObject followedCoference=new AVObject("Foll,owedConference");
+        AVObject followedCoference=new AVObject("FollowedConference");
         AVUser mine=AVUser.getCurrentUser();
         followedCoference.put("follower", mine);
         followedCoference.put("conference",conference);

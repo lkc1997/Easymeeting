@@ -37,7 +37,6 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
     static class ConfListViewHolder extends RecyclerView.ViewHolder {
         View confListView;
         TextView confName;
-        ImageView confImage;
         TextView confState;
         Button  quitBtn;
 
@@ -64,7 +63,7 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
         holder.quitBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                int position=holder.getAdapterPosition();
+                final int position=holder.getAdapterPosition();
                 final ConfListBean conference=dataList.get(position);
                 new AlertDialog.Builder(context)
                         .setTitle("确认")
@@ -82,9 +81,10 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
                                             @Override
                                             public void done(AVException e) {
                                                 if(e==null)
-                                                    Log.d("Easymeeting","成功删除");
+                                                    //Log.d("Easymeeting","成功删除");
+                                                    removeData(position);
                                                 else
-                                                    Log.e("Easymeeting",e.getMessage());
+                                                    ;//Log.e("Easymeeting",e.getMessage());
                                             }
                                         });
                                     }
@@ -121,5 +121,13 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
     public int getItemCount() {
         return dataList.size();
     }
-
+    //删除当前项
+    public void removeData(int position) {
+        dataList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRemoved(position);
+        if(position != getItemCount()) {
+            notifyItemRangeChanged(position, getItemCount());
+        }
+    }
 }
