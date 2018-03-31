@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/LCIMKitTheme"> <!-- 程序初始化时加载 -->
 
-        <activity android:name=".ui.MainActivity"
+        <activity
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,31 +45,39 @@
         </receiver>
         <!-- 实时通信模块、推送 END -->
         <!-- 反馈组件（需要加入以下声明）START -->
-        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.avos.avoscloud.feedback.ThreadActivity"
+            android:screenOrientation="portrait" />
         <!-- 反馈组件 END -->
         <!-- LeacCloud end -->
-        <activity android:name=".ui.login.LoginActivity"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".ui.register.RegisterActivity"
-            android:screenOrientation="portrait"  />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.common.BuddyActivity"
-            android:theme="@style/LCIMActivity.NoActionBar"
-            android:screenOrientation="portrait"  />
+            android:screenOrientation="portrait"
+            android:theme="@style/LCIMActivity.NoActionBar" />
         <activity
             android:name=".ui.common.TestActivity"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".ui.common.ConfListActivity"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".ui.common.ConfCreateActivity"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".ui.common.ConfValueActivity"
-            android:screenOrientation="portrait"  />
-        <activity android:name=".ui.common.ConfDetailActivity"
-            android:screenOrientation="portrait"  />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.common.ConfListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.common.ConfCreateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.common.ConfValueActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.common.ConfDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.common.QRcodeActivity"></activity>
     </application>
 
 </manifest>

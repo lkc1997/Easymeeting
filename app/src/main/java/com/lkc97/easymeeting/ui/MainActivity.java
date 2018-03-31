@@ -13,6 +13,7 @@ import com.lkc97.easymeeting.ui.common.BuddyActivity;
 import com.lkc97.easymeeting.ui.common.ConfCreateActivity;
 import com.lkc97.easymeeting.ui.common.ConfListActivity;
 import com.lkc97.easymeeting.ui.common.ConfValueActivity;
+import com.lkc97.easymeeting.ui.common.QRcodeActivity;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity{
@@ -60,5 +61,9 @@ public class MainActivity extends AppCompatActivity{
     public void openCvalueActivity(){
         Intent loginIntent=new Intent(MainActivity.this, ConfValueActivity.class);
         startActivity(loginIntent);
+    }
+    public void openQRcodeActivity(){
+        Intent QrcodeIntent=new Intent(MainActivity.this, QRcodeActivity.class);
+        startActivity(QrcodeIntent);
     }
 }

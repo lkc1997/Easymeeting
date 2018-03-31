@@ -61,6 +61,8 @@ dependencies {
 
     compile 'com.contrarywind:Android-PickerView:4.1.0'
     compile 'com.google.code.gson:gson:2.7'
+
+    compile group: 'com.google.zxing', name: 'core', version: '3.3.2'
 }
 dependencies {
     implementation 'com.android.support:support-v4:25.+'
@@ -73,4 +75,7 @@ dependencies {
 }
 dependencies {
     implementation 'com.android.support:support-v4:25.+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
