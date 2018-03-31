@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -15,6 +16,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.DeleteCallback;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.GetCallback;
+import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
 
 import java.util.List;
@@ -24,6 +26,7 @@ public class ConfDetailActivity extends AppCompatActivity {
     private TextView confName;
     private TextView confPlace;
     private TextView confTime;
+    private ImageView confImage;
     static{
 
     }
@@ -34,6 +37,7 @@ public class ConfDetailActivity extends AppCompatActivity {
         confName=(TextView)findViewById(R.id.conf_name_detail_activity);
         confPlace=(TextView)findViewById(R.id.conf_place_detail_activity);
         confTime=(TextView)findViewById(R.id.conf_time_detail_activity);
+        confImage=(ImageView)findViewById(R.id.conf_image_detail_activity);
         /*取得来自B页面的数据，并显示到画面*/
         Bundle bundle = this.getIntent().getExtras();
         /*获取Bundle中的数据，注意类型和key*/
@@ -89,5 +93,6 @@ public class ConfDetailActivity extends AppCompatActivity {
         confName.setText(conference.getString("confName"));
         confPlace.setText("地点:"+conference.getString("confPlace"));
         confTime.setText("日期:"+conference.getString("date"));
+        Glide.with(this.getApplicationContext()).load(conference.getAVFile("image").getUrl()).into(confImage);
     }
 }

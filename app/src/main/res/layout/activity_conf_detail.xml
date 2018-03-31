@@ -42,7 +42,7 @@
                 android:layout_height="1px"
                 android:background="@color/material_brown_700"/>
             <ImageView
-                android:id="@+id/conf_img"
+                android:id="@+id/conf_image_detail_activity"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:src="@drawable/test"/>
