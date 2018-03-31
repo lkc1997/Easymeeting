@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/conf_title"
+                android:id="@+id/conf_name_detail_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="40sp" />
@@ -26,19 +26,13 @@
                 android:layout_height="1px"
                 android:background="@color/material_brown_700"/>
             <TextView
-                android:id="@+id/conf_time"
+                android:id="@+id/conf_time_detail_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="会议时间："
                 android:textSize="15sp" />
             <TextView
-                android:id="@+id/conf_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="城市："
-                android:textSize="15sp" />
-            <TextView
-                android:id="@+id/conf_place"
+                android:id="@+id/conf_place_detail_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="会议地点："
