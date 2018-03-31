@@ -44,8 +44,7 @@
             <ImageView
                 android:id="@+id/conf_image_detail_activity"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:src="@drawable/test"/>
+                android:layout_width="match_parent" />
             <TextView
                 android:id="@+id/conf_brief"
                 android:layout_width="match_parent"

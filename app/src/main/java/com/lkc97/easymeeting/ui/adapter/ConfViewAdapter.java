@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVObject;
 import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.common.ConfDetailActivity;
 
 import java.util.List;
@@ -24,7 +22,7 @@ import java.util.List;
  * Created by admin on 2018/3/3.
  */
 
-public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder>{
+public class ConfViewAdapter extends RecyclerView.Adapter<ConfViewAdapter.ConfViewHolder>{
 
     private Context context;
     private List<ConfBean> dataList;
@@ -46,13 +44,13 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
         }
     }
 
-    public ConfAdapter(Context context, List<ConfBean> dataList) {
+    public ConfViewAdapter(Context context, List<ConfBean> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
 
     @Override
-    public ConfAdapter.ConfViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ConfViewAdapter.ConfViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=LayoutInflater.from(context).inflate(R.layout.conf_item, parent, false);
         final ConfViewHolder holder=new ConfViewHolder(view);
         holder.confView.setOnClickListener(new View.OnClickListener(){
@@ -76,7 +74,7 @@ public class ConfAdapter extends RecyclerView.Adapter<ConfAdapter.ConfViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ConfAdapter.ConfViewHolder holder, int position) {
+    public void onBindViewHolder(ConfViewAdapter.ConfViewHolder holder, int position) {
         ConfBean confBean = dataList.get(position);
         holder.confName.setText(confBean.getName());
         holder.content.setText(dataList.get(position).getContent());
