@@ -52,7 +52,6 @@ import java.util.Date;
 
 public class ConfCreateActivity extends AppCompatActivity implements View.OnClickListener{
     public static final int CHOOSE_PHOTO=2;
-    File imageSelected=null;
     AVFile confImage=null;
     String imageAbsolutePath=null;
     private EditText confName;

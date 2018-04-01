@@ -23,7 +23,6 @@ public class BuddyListNW {
     private AVQuery<AVObject> query = new AVQuery<>("_Follower");
     private AVQuery<AVUser> followerQuery;
     public void getBuddyList(final BuddyListCallBack buddyListCallBack){
-        AVUser currentUser = AVUser.getCurrentUser();
             try {
                 followerQuery = AVUser.getCurrentUser().followerQuery(AVUser.class);
                 followerQuery.include("follower");
@@ -34,7 +33,10 @@ public class BuddyListNW {
                 @Override
                 public void done(List<AVUser> avObjects, AVException avException) {
                     // avObjects 包含了 userA 的粉丝列表
+                    if(avObjects.size()==0)
+                        Log.d("Easymeeting", "未找到好友");
                     buddyListCallBack.receiveBuddyList(avObjects);
+
                 }
             });
         }

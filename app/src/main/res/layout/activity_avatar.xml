@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lkc97.easymeeting.ui.register.AvatarActivity">
+    <Button
+        android:id="@+id/select_avatar_avatar_activity"
+        android:onClick="selectAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择头像"/>
+    <Button
+        android:id="@+id/send_avatar_avatar_activity"
+        android:onClick="sendAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确认头像"/>
+</LinearLayout>

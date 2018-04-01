@@ -99,7 +99,7 @@ public class ConfViewFragment extends Fragment {
                 for(int i=0;i<list.size();i++){
                     conference=list.get(i);
                     file=conference.getAVFile("image");
-                    dataList.add(new ConfBean(conference.getString("confName"),file.getUrl(),conference.getString("confBriefIndroduction"),conference));
+                    dataList.add(new ConfBean(conference.getString("confName"),file.getUrl(),conference.getString("briefIntroduction"),conference));
                 }
                 adapter=new ConfViewAdapter(conf_frag.getContext(),dataList);
                 conf_recv.setAdapter(adapter);

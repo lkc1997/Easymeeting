@@ -17,7 +17,5 @@ public class QRcodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qrcode);
         ImageView mImageView = (ImageView) findViewById(R.id.qrcode);
         Bitmap mBitmap = QRCodeUtil.createQRCodeBitmap(AVUser.getCurrentUser().getUsername(), 480, 480); mImageView.setImageBitmap(mBitmap);
-
-
     }
 }

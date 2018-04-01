@@ -77,7 +77,8 @@
         <activity
             android:name=".ui.common.ConfDetailActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.common.QRcodeActivity"></activity>
+        <activity android:name=".ui.common.QRcodeActivity" />
+        <activity android:name=".ui.register.AvatarActivity"></activity>
     </application>
 
 </manifest>

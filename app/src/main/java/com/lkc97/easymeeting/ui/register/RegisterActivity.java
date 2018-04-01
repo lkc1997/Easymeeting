@@ -1,9 +1,16 @@
 package com.lkc97.easymeeting.ui.register;
 
+import android.annotation.TargetApi;
+import android.content.ContentUris;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,11 +31,12 @@ import com.lkc97.easymeeting.ui.MainActivity;
 import cn.leancloud.chatkit.LCChatKit;
 
 public class RegisterActivity extends AppCompatActivity {
-    private  boolean registerState=false;
+    public static final int CHOOSE_PHOTO=2;
     private EditText usernamerEdittxt=null;
     private EditText passwordEdittext=null;
     private EditText emailAddress=null;
     private Button registerBtn=null;
+    private String imageAbsolutePath=null;
     private Handler registerHandler=new Handler(){
       public void handleMessage(Message msg){
           switch(msg.what){
@@ -58,10 +66,10 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                     });
-                    Intent loginIntent=new Intent(RegisterActivity.this, MainActivity.class);
+                    Intent AvatarIntent=new Intent(RegisterActivity.this, AvatarActivity.class);
                     //销毁当前活动，让打开的活动无法返回当前活动
-                    loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(loginIntent);
+                    AvatarIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(AvatarIntent);
                     break;
                 case -1:
                     Toast.makeText(getApplicationContext(), "用户名或密码错误",
@@ -132,4 +140,5 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
 }
