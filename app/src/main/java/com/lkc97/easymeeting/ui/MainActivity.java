@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
+import com.avos.avoscloud.AVUser;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.manager.LoginManager;
 import com.lkc97.easymeeting.data.network.BuddyListNW;
@@ -65,5 +66,11 @@ public class MainActivity extends AppCompatActivity{
     public void openQRcodeActivity(){
         Intent QrcodeIntent=new Intent(MainActivity.this, QRcodeActivity.class);
         startActivity(QrcodeIntent);
+    }
+    public void openLoginActivity(){
+        AVUser.logOut();
+        Intent loginIntent=new Intent(MainActivity.this, LoginActivity.class);
+        loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(loginIntent);
     }
 }

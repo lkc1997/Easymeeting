@@ -33,6 +33,7 @@ public class MineFragment extends Fragment{
     private Button testBtn;
     private Button buddyListBtn;
     private Button getQRcodeBtn;
+    private Button lotOutBtn;
     public MineFragment() {
         // Required empty public constructor
     }
@@ -72,6 +73,7 @@ public class MineFragment extends Fragment{
         buddyListBtn=(Button)view.findViewById(R.id.buddy_list_mine_fragment);
         testBtn=(Button)view.findViewById(R.id.test);
         getQRcodeBtn=(Button)view.findViewById(R.id.get_qrcode_btn);
+        lotOutBtn=(Button)view.findViewById(R.id.logout_btn);
         buddyListBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -101,6 +103,14 @@ public class MineFragment extends Fragment{
             public void onClick(View view){
                 MainActivity mainActivity=(MainActivity)getActivity();
                 mainActivity.openQRcodeActivity();
+            }
+        });
+        lotOutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+                MainActivity mainActivity=(MainActivity)getActivity();
+                mainActivity.openLoginActivity();
             }
         });
         return view;

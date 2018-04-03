@@ -31,5 +31,14 @@
             android:layout_alignRight="@+id/buddy_list_mine_fragment"
             android:layout_below="@+id/buddy_list_mine_fragment"
             android:text="生产二维码" />
+
+        <Button
+            android:id="@+id/logout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/get_qrcode_btn"
+            android:text="注销"/>
     </RelativeLayout>
 </FrameLayout>
