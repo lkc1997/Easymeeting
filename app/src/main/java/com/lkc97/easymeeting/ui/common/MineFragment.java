@@ -18,14 +18,7 @@ import com.avos.avoscloud.FollowCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MineFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MineFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MineFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,7 +82,7 @@ public class MineFragment extends Fragment{
         testBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                /*AVUser.getCurrentUser().followInBackground("5ab525f6756571108cdc1c29", new FollowCallback() {
+                AVUser.getCurrentUser().followInBackground("5ac0d7859f54543001023de4", new FollowCallback() {
                     @Override
                     public void done(AVObject object, AVException e) {
                         if (e == null) {
@@ -100,7 +93,7 @@ public class MineFragment extends Fragment{
                         else
                             Log.d("TEST", e.getMessage());
                     }
-                });*/
+                });
             }
         });
         getQRcodeBtn.setOnClickListener(new View.OnClickListener(){

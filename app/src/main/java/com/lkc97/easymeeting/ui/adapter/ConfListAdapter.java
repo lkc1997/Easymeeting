@@ -23,7 +23,10 @@ import com.avos.avoscloud.DeleteCallback;
 import com.avos.avoscloud.FindCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.common.ConfDetailActivity;
+import com.lkc97.easymeeting.ui.common.TestActivity;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -105,6 +108,26 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
                 Log.d("Easymeeting",conf.getObjectId());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+            }
+        });
+        holder.confState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int position=holder.getAdapterPosition();
+                final ConfListBean conference=dataList.get(position);
+                Calendar calendar = Calendar.getInstance();
+                int year=calendar.get(Calendar.YEAR);
+                int month=calendar.get(Calendar.MONTH)+1;//未知错误
+                int day=calendar.get(Calendar.DATE);
+                String startTime=conference.getConference().getString("date");
+                String[] data=startTime.split("-");
+                if(Integer.parseInt(data[0])==year&&Integer.parseInt(data[1])==month&&Integer.parseInt(data[2])==day){
+                    Intent intent=new Intent(context, TestActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("objectId",conference.getConference().getObjectId());
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
             }
         });
         return holder;

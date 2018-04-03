@@ -17,6 +17,7 @@ import com.lkc97.easymeeting.ui.adapter.ConfListAdapter;
 import com.lkc97.easymeeting.ui.adapter.ConfListBean;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -55,15 +56,22 @@ public class ConfListActivity extends AppCompatActivity {
                 int interval;
                 AVObject conference=null;
                 String state;
+                //获得当前日期
+                Calendar calendar = Calendar.getInstance();
+                int year=calendar.get(Calendar.YEAR);
+                int month=calendar.get(Calendar.MONTH)+1;//未知错误，落后实际日期一个月
+                int day=calendar.get(Calendar.DATE);
                 //Log.d("Easymeeting",""+list.get(0).getAVObject("conference").getString("confName"));
                 for(AVObject followedConference:list){
                     conference=followedConference.getAVObject("conference");
-                    //Log.d("Easymeeting",""+conference.getDate("createdAt"));
-                    interval=data.compareTo(conference.getDate("createdAt"));
-                    if(interval>0)
-                        state=interval+"天后";
-                    else if(interval==0)
-                        state="今日开始";
+                    //Log.d("Easymeeting",year+"-"+month+"-"+day);打印获得的当前日期
+                    String startTime=conference.getString("date");
+                    String[] date=startTime.split("-");
+                    if(Integer.parseInt(date[0])==year&&Integer.parseInt(date[1])==month&&Integer.parseInt(date[2])==day)
+                        state="当天开始，点击进入会议";
+                    else if(Integer.parseInt(date[0])>year||Integer.parseInt(date[0])==year&&Integer.parseInt(date[1])>month||
+                            Integer.parseInt(date[0])==year&&Integer.parseInt(date[1])==month&&Integer.parseInt(date[2])>day)
+                        state="未开始";
                     else
                         state="已过期";
                     dataList.add(new ConfListBean(conference.getString("confName"),state,conference));
