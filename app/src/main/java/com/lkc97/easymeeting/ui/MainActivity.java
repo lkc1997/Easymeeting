@@ -2,8 +2,9 @@ package com.lkc97.easymeeting.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.avos.avoscloud.AVUser;
 import com.lkc97.easymeeting.R;
@@ -22,11 +23,9 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //隐藏原始标题栏
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null){
-            actionBar.hide();
-        }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         //判断是否有账户缓存
         LoginManager mLoginmanager=new LoginManager();
         if(!mLoginmanager.checkLoginState()){
@@ -44,6 +43,12 @@ public class MainActivity extends AppCompatActivity{
             }
         }
     }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.toolbar,menu);
+        return true;
+    }
+
     public void openBuddyActivity(){
         Intent loginIntent=new Intent(MainActivity.this, BuddyActivity.class);
         startActivity(loginIntent);

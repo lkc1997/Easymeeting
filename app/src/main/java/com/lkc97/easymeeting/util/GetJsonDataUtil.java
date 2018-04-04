@@ -1,4 +1,4 @@
-package com.lkc97.easymeeting.ui.adapter;
+package com.lkc97.easymeeting.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;

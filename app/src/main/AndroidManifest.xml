@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/LCIMKitTheme"> <!-- 程序初始化时加载 -->
+        android:theme="@style/AppTheme"> <!-- 程序初始化时加载 -->
 
         <activity
             android:name=".ui.MainActivity"
@@ -58,13 +58,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.common.BuddyActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/LCIMActivity.NoActionBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.common.TestActivity"
             android:label="@string/title_activity_test"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.common.ConfListActivity"
             android:screenOrientation="portrait" />
@@ -78,7 +76,7 @@
             android:name=".ui.common.ConfDetailActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.common.QRcodeActivity" />
-        <activity android:name=".ui.register.AvatarActivity"></activity>
+        <activity android:name=".ui.register.AvatarActivity"/>
     </application>
 
 </manifest>

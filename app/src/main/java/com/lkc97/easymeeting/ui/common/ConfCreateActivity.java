@@ -38,12 +38,11 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.google.gson.Gson;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.ui.adapter.GetJsonDataUtil;
+import com.lkc97.easymeeting.util.GetJsonDataUtil;
 import com.lkc97.easymeeting.ui.adapter.JsonBean;
 
 import org.json.JSONArray;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
