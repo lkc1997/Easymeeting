@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.ui.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
