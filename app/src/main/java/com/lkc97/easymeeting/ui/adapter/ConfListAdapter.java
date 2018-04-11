@@ -21,13 +21,23 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.DeleteCallback;
 import com.avos.avoscloud.FindCallback;
+import com.avos.avoscloud.im.v2.AVIMChatRoom;
+import com.avos.avoscloud.im.v2.AVIMConversation;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback;
 import com.lkc97.easymeeting.R;
+import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.common.ConfDetailActivity;
 import com.lkc97.easymeeting.ui.common.TestActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.activity.LCIMConversationActivity;
+import cn.leancloud.chatkit.utils.LCIMConstants;
 
 /**
  * Created by admin on 2018/3/24.
@@ -36,13 +46,12 @@ import java.util.List;
 public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfListViewHolder>{
     private Context context;
     private List<ConfListBean> dataList;
-
+    private List<String> idList=new ArrayList<>();
     static class ConfListViewHolder extends RecyclerView.ViewHolder {
         View confListView;
         TextView confName;
         TextView confState;
         Button  quitBtn;
-
         public ConfListViewHolder(View itemView) {
             super(itemView);
             confListView=itemView;
@@ -122,11 +131,38 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
                 String startTime=conference.getConference().getString("date");
                 String[] data=startTime.split("-");
                 if(Integer.parseInt(data[0])==year&&Integer.parseInt(data[1])==month&&Integer.parseInt(data[2])==day){
-                    Intent intent=new Intent(context, TestActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("objectId",conference.getConference().getObjectId());
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
+                    AVQuery<AVObject> query = new AVQuery<>("Conference");
+                    query.whereEqualTo("objectId", "5abf56964773f7005d43b451");
+                    query.findInBackground(new FindCallback<AVObject>() {
+                        @Override
+                        public void done(List<AVObject> list, AVException e) {
+                            AVQuery<AVObject> query = new AVQuery<>("FollowedConference");
+                            query.whereEqualTo("conference", list.get(0));
+                            query.include("follower");
+                            query.findInBackground(new FindCallback<AVObject>() {
+                                @Override
+                                public void done(List<AVObject> list, AVException e) {
+                                    for(AVObject user:list){
+                                        idList.add(user.getString("username"));
+                                    }
+                                    LCChatKit.getInstance().getClient().createChatRoom(
+                                            idList, "群聊", null, true, new AVIMConversationCreatedCallback() {
+                                                @Override
+                                                public void done(AVIMConversation avimConversation, AVIMException e) {
+                                                    if (avimConversation instanceof AVIMChatRoom) {
+                                                        Intent intent = new Intent(context, LCIMConversationActivity.class);
+                                                        intent.putExtra(LCIMConstants.CONVERSATION_ID, avimConversation.getConversationId());
+                                                        context.startActivity(intent);
+                                                    } else {
+                                                        Log.e("Easymeeting", e.getMessage());
+                                                    }
+                                                }
+                                            });
+
+                                }
+                            });
+                        }
+                    });
                 }
             }
         });
