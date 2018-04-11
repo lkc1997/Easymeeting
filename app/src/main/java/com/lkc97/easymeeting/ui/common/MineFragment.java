@@ -1,6 +1,7 @@
 package com.lkc97.easymeeting.ui.common;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,10 +14,23 @@ import android.widget.Button;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.FollowCallback;
+import com.avos.avoscloud.im.v2.AVIMChatRoom;
+import com.avos.avoscloud.im.v2.AVIMConversation;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.activity.LCIMConversationActivity;
+import cn.leancloud.chatkit.utils.LCIMConstants;
 
 
 public class MineFragment extends Fragment{
@@ -34,6 +48,7 @@ public class MineFragment extends Fragment{
     private Button buddyListBtn;
     private Button getQRcodeBtn;
     private Button lotOutBtn;
+    private List<String> idList=new ArrayList<>();
     public MineFragment() {
         // Required empty public constructor
     }
@@ -81,19 +96,41 @@ public class MineFragment extends Fragment{
                 mainActivity.openBuddyActivity();
             }
         });
+        idList.add("lkc");
+        idList.add("thx");
         testBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                AVUser.getCurrentUser().followInBackground("5ac0d7859f54543001023de4", new FollowCallback() {
+                AVQuery<AVObject> query = new AVQuery<>("Conference");
+                query.whereEqualTo("objectId", "5abf56964773f7005d43b451");
+                query.findInBackground(new FindCallback<AVObject>() {
                     @Override
-                    public void done(AVObject object, AVException e) {
-                        if (e == null) {
-                            Log.d("TEST", "follow succeeded.");
-                        } else if (e.getCode() == AVException.DUPLICATE_VALUE) {
-                            Log.d("TEST", "Already followed.");
-                        }
-                        else
-                            Log.d("TEST", e.getMessage());
+                    public void done(List<AVObject> list, AVException e) {
+                        AVQuery<AVObject> query = new AVQuery<>("FollowedConference");
+                        query.whereEqualTo("conference", list.get(0));
+                        query.include("follower");
+                        query.findInBackground(new FindCallback<AVObject>() {
+                            @Override
+                            public void done(List<AVObject> list, AVException e) {
+                                for(AVObject user:list){
+                                    idList.add(user.getString("username"));
+                                }
+                                LCChatKit.getInstance().getClient().createChatRoom(
+                                        idList, getString(R.string.square), null, true, new AVIMConversationCreatedCallback() {
+                                            @Override
+                                            public void done(AVIMConversation avimConversation, AVIMException e) {
+                                                if (avimConversation instanceof AVIMChatRoom) {
+                                                    MainActivity mainActivity=(MainActivity)getActivity();
+                                                    mainActivity.openCharRoomActivity(avimConversation);
+
+                                                } else {
+                                                    Log.e("Easymeeting", e.getMessage());
+                                                }
+                                            }
+                                        });
+
+                            }
+                        });
                     }
                 });
             }

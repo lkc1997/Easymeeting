@@ -7,5 +7,9 @@
     tools:context="com.lkc97.easymeeting.ui.common.TestActivity">
 
 
-
+<Button
+    android:id="@+id/join_chat_btn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="test"/>
 </android.support.design.widget.CoordinatorLayout>
