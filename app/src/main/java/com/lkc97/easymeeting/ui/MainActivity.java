@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.manager.LoginManager;
 import com.lkc97.easymeeting.data.network.BuddyListNW;
@@ -17,6 +18,9 @@ import com.lkc97.easymeeting.ui.common.ConfListActivity;
 import com.lkc97.easymeeting.ui.common.ConfValueActivity;
 import com.lkc97.easymeeting.ui.common.QRcodeActivity;
 import com.lkc97.easymeeting.ui.login.LoginActivity;
+
+import cn.leancloud.chatkit.activity.LCIMConversationActivity;
+import cn.leancloud.chatkit.utils.LCIMConstants;
 
 public class MainActivity extends AppCompatActivity{
     @Override
@@ -77,5 +81,10 @@ public class MainActivity extends AppCompatActivity{
         Intent loginIntent=new Intent(MainActivity.this, LoginActivity.class);
         loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(loginIntent);
+    }
+    public void openCharRoomActivity(AVIMConversation avimConversation){
+        Intent intent = new Intent(MainActivity.this, LCIMConversationActivity.class);
+        intent.putExtra(LCIMConstants.CONVERSATION_ID, avimConversation.getConversationId());
+        startActivity(intent);
     }
 }
