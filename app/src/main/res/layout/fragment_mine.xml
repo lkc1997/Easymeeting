@@ -2,43 +2,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.lkc97.easymeeting.ui.common.MineFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/test"
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/test"
+            app:civ_border_color="@color/background_material_dark"
+            app:civ_border_width="2dp"
+            app:layout_heightPercent="25%" />
+
+        <TextView
+            android:id="@+id/personal_txt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test"/>
+            android:layout_below="@+id/user_img"
+            android:text="Personal"
+            android:textSize="20sp"
+            app:layout_heightPercent="5%" />
+
+        <LinearLayout
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/personal_txt"
+            android:orientation="horizontal"
+            app:layout_heightPercent="8%">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/acccount" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="end|center_vertical"
+                android:hint="显示用户名" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/user"
+            android:orientation="horizontal"
+            app:layout_heightPercent="8%">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/acccount" />
+
+            <TextView
+                android:id="@+id/email_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="end|center_vertical"
+                android:hint="显示邮箱" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/email"
+            android:orientation="horizontal"
+            app:layout_heightPercent="8%">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/acccount" />
+
+            <TextView
+                android:id="@+id/password_change"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="end|center_vertical"
+                android:hint="点击修改密码" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/social_txt"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/password"
+            android:text="Social"
+            android:textSize="20sp"
+            app:layout_heightPercent="5%" />
 
         <Button
             android:id="@+id/buddy_list_mine_fragment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/test"
-            android:text="好友" />
+            android:layout_below="@+id/social_txt"
+            android:text="好友放在toolbar"
+            app:layout_heightPercent="8%" />
 
         <Button
             android:id="@+id/get_qrcode_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/buddy_list_mine_fragment"
-            android:layout_alignRight="@+id/buddy_list_mine_fragment"
             android:layout_below="@+id/buddy_list_mine_fragment"
-            android:text="生产二维码" />
+            android:text="生产二维码"
+            app:layout_heightPercent="8%" />
 
         <Button
             android:id="@+id/logout_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_below="@+id/get_qrcode_btn"
-            android:text="注销"/>
+            android:text="注销"
+            app:layout_heightPercent="8%" />
+
+        <Button
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/logout_btn"
+            android:text="test"
+            app:layout_heightPercent="8%" />
+
     </android.support.percent.PercentRelativeLayout>
+
 </ScrollView>
