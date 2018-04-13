@@ -1,4 +1,4 @@
-<android.support.percent.PercentRelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,58 +8,69 @@
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
-        app:layout_heightPercent="30%"
-        app:layout_widthPercent="100%"
-        android:id="@+id/advocate">
-        <com.lkc97.easymeeting.ui.adapter.LoopViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp" />
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            app:ci_animator="@animator/indicator_animator"
-            app:ci_animator_reverse="@animator/indicator_animator_reverse"
-            app:ci_drawable="@drawable/black_radius_square"
-            app:ci_height="4dp"
-            app:ci_margin="6dp"
-            app:ci_width="10dp"/>
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/conf_list"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/frag_myconf_toolbar"
+        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        app:layout_heightPercent="30%"
-        android:layout_below="@+id/advocate"
-        android:text="会议列表"
-        android:gravity="center"
-        android:background="@color/material_red_300"/>
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <TextView
-        android:id="@+id/conf_creat"
-        app:layout_heightPercent="30%"
-        app:layout_widthPercent="60%"
-        android:layout_gravity="start|bottom"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/conf_list"
-        android:text="创建会议"
-        android:gravity="center"
-        android:background="@color/material_teal_700"/>
-    <TextView
-        android:id="@+id/conf_value"
-        app:layout_heightPercent="30%"
-        app:layout_widthPercent="32%"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/conf_list"
-        android:layout_toRightOf="@+id/conf_creat"
-        android:layout_toEndOf="@+id/conf_creat"
-        android:text="意见反馈"
-        android:gravity="center"
-        android:background="@color/material_green_300"/>
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            app:layout_heightPercent="30%"
+            app:layout_widthPercent="100%"
+            android:id="@+id/advocate">
+            <com.lkc97.easymeeting.ui.adapter.LoopViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp" />
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                app:ci_animator="@animator/indicator_animator"
+                app:ci_animator_reverse="@animator/indicator_animator_reverse"
+                app:ci_drawable="@drawable/black_radius_square"
+                app:ci_height="4dp"
+                app:ci_margin="6dp"
+                app:ci_width="10dp"/>
+        </RelativeLayout>
 
-</android.support.percent.PercentRelativeLayout>
+        <TextView
+            android:id="@+id/conf_list"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            app:layout_heightPercent="30%"
+            android:layout_below="@+id/advocate"
+            android:text="会议列表"
+            android:gravity="center"
+            android:background="@color/material_red_300"/>
+
+        <TextView
+            android:id="@+id/conf_creat"
+            app:layout_heightPercent="30%"
+            app:layout_widthPercent="60%"
+            android:layout_gravity="start|bottom"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/conf_list"
+            android:text="创建会议"
+            android:gravity="center"
+            android:background="@color/material_teal_700"/>
+        <TextView
+            android:id="@+id/conf_value"
+            app:layout_heightPercent="30%"
+            app:layout_widthPercent="32%"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/conf_list"
+            android:layout_toRightOf="@+id/conf_creat"
+            android:layout_toEndOf="@+id/conf_creat"
+            android:text="意见反馈"
+            android:gravity="center"
+            android:background="@color/material_green_300"/>
+    </android.support.percent.PercentRelativeLayout>
+</LinearLayout>

@@ -3,10 +3,16 @@ package com.lkc97.easymeeting.ui.common;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
@@ -58,12 +64,14 @@ public class MyConfFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
+    private Toolbar mToolbarMyConf;
     private LoopViewPager viewPager;
     private CircleIndicator indicator;
     private TextView confList;
@@ -71,6 +79,27 @@ public class MyConfFragment extends Fragment implements View.OnClickListener{
     private TextView confValue;
     private View view;
     private MainActivity mainActivity;
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.myconf_toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    /*给toolbar右上角Item添加选择效果,或通过实现接口完成监听器*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.toolbar_search) {
+            Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.toolbar_chat) {
+            Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -81,6 +110,12 @@ public class MyConfFragment extends Fragment implements View.OnClickListener{
         confList = (TextView) view.findViewById(R.id.conf_list);
         confCreate = (TextView) view.findViewById(R.id.conf_creat);
         confValue = (TextView) view.findViewById(R.id.conf_value);
+        //add toolbar
+        mToolbarMyConf = (Toolbar) view.findViewById(R.id.frag_myconf_toolbar);
+        mToolbarMyConf.setTitle("会议");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMyConf);
+
+
         mainActivity=(MainActivity)getActivity();
         viewPager.setAdapter(new SamplePagerAdapter());
         indicator.setViewPager(viewPager);

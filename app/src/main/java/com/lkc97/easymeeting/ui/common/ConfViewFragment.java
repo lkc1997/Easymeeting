@@ -4,11 +4,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
@@ -17,8 +23,8 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.callback.ReloadConfCallBack;
-import com.lkc97.easymeeting.ui.adapter.ConfViewAdapter;
 import com.lkc97.easymeeting.ui.adapter.ConfBean;
+import com.lkc97.easymeeting.ui.adapter.ConfViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +34,7 @@ import java.util.List;
  */
 
 public class ConfViewFragment extends Fragment {
+    private Toolbar mToolbarConfView;
     private View conf_frag;
     private RecyclerView conf_recv;
     private List<ConfBean> dataList = new ArrayList<>();
@@ -35,6 +42,32 @@ public class ConfViewFragment extends Fragment {
     private ConfViewAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Boolean confLoadState=false;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.confview_toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    /*给toolbar右上角Item添加选择效果,或通过实现接口完成监听器*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.toolbar_search) {
+            Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.toolbar_chat) {
+            Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +91,10 @@ public class ConfViewFragment extends Fragment {
         innitView();
         showData();
         context=conf_frag.getContext();
+        //add toolbar
+        mToolbarConfView = (Toolbar) conf_frag.findViewById(R.id.frag_conf_view_toolbar);
+        mToolbarConfView.setTitle("推荐");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarConfView);
         return conf_frag;
     }
 
