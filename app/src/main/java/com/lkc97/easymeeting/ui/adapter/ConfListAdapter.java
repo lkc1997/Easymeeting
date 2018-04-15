@@ -3,7 +3,6 @@ package com.lkc97.easymeeting.ui.adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -26,18 +22,16 @@ import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.common.ConfDetailActivity;
-import com.lkc97.easymeeting.ui.common.TestActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import cn.leancloud.chatkit.LCChatKit;
 import cn.leancloud.chatkit.activity.LCIMConversationActivity;
 import cn.leancloud.chatkit.utils.LCIMConstants;
+import info.hoang8f.widget.FButton;
 
 /**
  * Created by admin on 2018/3/24.
@@ -49,15 +43,15 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
     private List<String> idList=new ArrayList<>();
     static class ConfListViewHolder extends RecyclerView.ViewHolder {
         View confListView;
-        TextView confName;
+        FontTextView confName;
         TextView confState;
-        Button  quitBtn;
+        FButton  quitBtn;
         public ConfListViewHolder(View itemView) {
             super(itemView);
             confListView=itemView;
-            confName = (TextView) itemView.findViewById(R.id.conf_list_name);
+            confName = (FontTextView) itemView.findViewById(R.id.conf_list_name);
             confState = (TextView) itemView.findViewById(R.id.conf_list_state);
-            quitBtn=(Button)itemView.findViewById(R.id.conf_list_quit_btn);
+            quitBtn=(FButton) itemView.findViewById(R.id.conf_list_quit_btn);
         }
     }
 

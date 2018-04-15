@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="demo_button_min_width">100dp</dimen>
+    <dimen name="demo_button_min_height">30dp</dimen>
 </resources>

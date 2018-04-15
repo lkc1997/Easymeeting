@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //判断是否有账户缓存
         LoginManager mLoginmanager=new LoginManager();
         if(!mLoginmanager.checkLoginState()){

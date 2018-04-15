@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -20,10 +23,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 public class ConfListActivity extends AppCompatActivity {
 
+    private Toolbar mToolbarConfList;
     private RecyclerView conf_list_recv;
     private List<ConfListBean> dataList = new ArrayList<>();
     private Context context;
@@ -33,9 +36,27 @@ public class ConfListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conf_list);
+        mToolbarConfList = (Toolbar) findViewById(R.id.conf_list_toolbar) ;
+        mToolbarConfList.setTitle("会议列表");
+        setSupportActionBar(mToolbarConfList);
         innitView();
         loadFollowedConference();
         conf_list_recv.addItemDecoration(new MyDecoration(this, MyDecoration.VERTICAL_LIST,R.drawable.divider));
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.conflist_toolbar,menu);
+        return true;
+    }
+
+    /*给toolbar右上角Item添加选择效果,或通过实现接口完成监听器*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.toolbar_search) {
+            Toast.makeText(ConfListActivity.this, "补充搜索界面",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void innitView() {
