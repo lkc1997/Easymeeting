@@ -14,10 +14,9 @@ public class ConfBean {
     private String imageUrl;
     private AVObject conference;
 
-    public ConfBean(String name,String imageUrl,String content,AVObject conference){
+    public ConfBean(String name,String imageUrl,AVObject conference){
         this.name=name;
         this.imageUrl=imageUrl;
-        this.content=content;
         this.conference=conference;
     }
 

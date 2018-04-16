@@ -39,7 +39,6 @@ public class ConfViewAdapter extends RecyclerView.Adapter<ConfViewAdapter.ConfVi
             cardView = (CardView) itemView;
             confName = (TextView) itemView.findViewById(R.id.conf_name);
             confImage = (ImageView) itemView.findViewById(R.id.conf_image);
-            content = (TextView) itemView.findViewById(R.id.conf_content);
 
         }
     }
@@ -77,7 +76,6 @@ public class ConfViewAdapter extends RecyclerView.Adapter<ConfViewAdapter.ConfVi
     public void onBindViewHolder(ConfViewAdapter.ConfViewHolder holder, int position) {
         ConfBean confBean = dataList.get(position);
         holder.confName.setText(confBean.getName());
-        holder.content.setText(dataList.get(position).getContent());
         Glide.with(context).load(confBean.getImageUrl()).into(holder.confImage);
     }
 

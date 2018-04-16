@@ -96,6 +96,8 @@ public class MyConfFragment extends Fragment implements View.OnClickListener{
         }
         if (id == R.id.toolbar_chat) {
             Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+            MainActivity mainActivity=(MainActivity)getActivity();
+            mainActivity.openBuddyActivity();
         }
         return super.onOptionsItemSelected(item);
     }

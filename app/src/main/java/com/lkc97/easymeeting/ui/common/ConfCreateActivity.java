@@ -59,7 +59,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
     private Button confStartTime;
     private Button confEndTime;
     private ImageView confPlaceImg;
-
+    private TextView confDescriptionEdittext;
     private TimePickerView pvStartTime, pvEndTime, pvCustomLunar;
 
     private ArrayList<JsonBean> options1Items = new ArrayList<>();
@@ -87,7 +87,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
         confStartTime=(Button)findViewById(R.id.conf_starttime_btn);
         confEndTime=(Button)findViewById(R.id.conf_endtime_btn);
         confPlaceImg=(ImageView) findViewById(R.id.conf_place_img);
-
+        confDescriptionEdittext=(EditText)findViewById(R.id.conf_description_edittext);
         confPlace.setOnClickListener(this);
         confDate.setOnClickListener(this);
         confStartTime.setOnClickListener(this);
@@ -123,6 +123,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
         String sConfDate=confDate.getText().toString().trim();
         String sConfStartTime=confStartTime.getText().toString().trim();
         String sConfEndTime=confEndTime.getText().toString().trim();
+        String confDescription=confDescriptionEdittext.getText().toString().trim();
         if("".equals(sConfName)||"".equals(sConfPlace)||"".equals(sConfDate)) {
             Toast.makeText(getApplicationContext(), "请正确填写信息",
                     Toast.LENGTH_SHORT).show();
@@ -146,6 +147,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
             conference.put("startTime", sConfStartTime);
             conference.put("endTime", sConfEndTime);
             conference.put("creator", AVUser.getCurrentUser().getUsername());
+            conference.put("briefIntroduction",confDescription);
             conference.saveInBackground();// 保存到服务端
             Toast.makeText(getApplicationContext(), "成功申请会议",
                     Toast.LENGTH_SHORT).show();

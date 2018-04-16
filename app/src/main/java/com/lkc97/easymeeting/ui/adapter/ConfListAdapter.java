@@ -126,7 +126,7 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
                 String[] data=startTime.split("-");
                 if(Integer.parseInt(data[0])==year&&Integer.parseInt(data[1])==month&&Integer.parseInt(data[2])==day){
                     AVQuery<AVObject> query = new AVQuery<>("Conference");
-                    query.whereEqualTo("objectId", "5abf56964773f7005d43b451");
+                    query.whereEqualTo("objectId",conference.getConference().getObjectId());
                     query.findInBackground(new FindCallback<AVObject>() {
                         @Override
                         public void done(List<AVObject> list, AVException e) {
@@ -136,11 +136,11 @@ public class ConfListAdapter extends RecyclerView.Adapter<ConfListAdapter.ConfLi
                             query.findInBackground(new FindCallback<AVObject>() {
                                 @Override
                                 public void done(List<AVObject> list, AVException e) {
-                                    for(AVObject user:list){
-                                        idList.add(user.getString("username"));
+                                    for(AVObject followedConference:list){
+                                        idList.add(followedConference.getAVUser("follower").getUsername());
                                     }
                                     LCChatKit.getInstance().getClient().createChatRoom(
-                                            idList, "群聊", null, true, new AVIMConversationCreatedCallback() {
+                                            idList, conference.getConference().getString("confName"), null, true, new AVIMConversationCreatedCallback() {
                                                 @Override
                                                 public void done(AVIMConversation avimConversation, AVIMException e) {
                                                     if (avimConversation instanceof AVIMChatRoom) {

@@ -13,11 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.im.v2.AVIMChatRoom;
 import com.avos.avoscloud.im.v2.AVIMConversation;
@@ -43,10 +46,11 @@ public class MineFragment extends Fragment{
 
     private Toolbar mToolbarMine;
     private View view;
-    private Button testBtn;
     private Button buddyListBtn;
     private Button getQRcodeBtn;
     private Button lotOutBtn;
+    private TextView username;
+    private TextView emailaddress;
     private List<String> idList=new ArrayList<>();
     public MineFragment() {
         // Required empty public constructor
@@ -96,6 +100,8 @@ public class MineFragment extends Fragment{
         }
         if (id == R.id.toolbar_chat) {
             Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+            MainActivity mainActivity=(MainActivity)getActivity();
+            mainActivity.openBuddyActivity();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -106,9 +112,12 @@ public class MineFragment extends Fragment{
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mine, container, false);
         buddyListBtn=(Button)view.findViewById(R.id.buddy_list_mine_fragment);
-        testBtn=(Button)view.findViewById(R.id.test);
         getQRcodeBtn=(Button)view.findViewById(R.id.get_qrcode_btn);
         lotOutBtn=(Button)view.findViewById(R.id.logout_btn);
+        username=(TextView)view.findViewById(R.id.username);
+        emailaddress=(TextView)view.findViewById(R.id.email_box);
+        username.setText(AVUser.getCurrentUser().getUsername());
+        emailaddress.setText(AVUser.getCurrentUser().getEmail());
         //add toolbar
         mToolbarMine = (Toolbar) view.findViewById(R.id.frag_mine_toolbar);
         mToolbarMine.setTitle("我的");
@@ -123,43 +132,6 @@ public class MineFragment extends Fragment{
         });
         idList.add("lkc");
         idList.add("thx");
-        testBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                AVQuery<AVObject> query = new AVQuery<>("Conference");
-                query.whereEqualTo("objectId", "5abf56964773f7005d43b451");
-                query.findInBackground(new FindCallback<AVObject>() {
-                    @Override
-                    public void done(List<AVObject> list, AVException e) {
-                        AVQuery<AVObject> query = new AVQuery<>("FollowedConference");
-                        query.whereEqualTo("conference", list.get(0));
-                        query.include("follower");
-                        query.findInBackground(new FindCallback<AVObject>() {
-                            @Override
-                            public void done(List<AVObject> list, AVException e) {
-                                for(AVObject user:list){
-                                    idList.add(user.getString("username"));
-                                }
-                                LCChatKit.getInstance().getClient().createChatRoom(
-                                        idList, getString(R.string.square), null, true, new AVIMConversationCreatedCallback() {
-                                            @Override
-                                            public void done(AVIMConversation avimConversation, AVIMException e) {
-                                                if (avimConversation instanceof AVIMChatRoom) {
-                                                    MainActivity mainActivity=(MainActivity)getActivity();
-                                                    mainActivity.openCharRoomActivity(avimConversation);
-
-                                                } else {
-                                                    Log.e("Easymeeting", e.getMessage());
-                                                }
-                                            }
-                                        });
-
-                            }
-                        });
-                    }
-                });
-            }
-        });
         getQRcodeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

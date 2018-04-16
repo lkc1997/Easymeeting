@@ -23,6 +23,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.data.callback.ReloadConfCallBack;
+import com.lkc97.easymeeting.ui.MainActivity;
 import com.lkc97.easymeeting.ui.adapter.ConfBean;
 import com.lkc97.easymeeting.ui.adapter.ConfViewAdapter;
 
@@ -65,6 +66,8 @@ public class ConfViewFragment extends Fragment {
         }
         if (id == R.id.toolbar_chat) {
             Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+            MainActivity mainActivity=(MainActivity)getActivity();
+            mainActivity.openBuddyActivity();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -105,20 +108,6 @@ public class ConfViewFragment extends Fragment {
     }
 
     private void showData() {
-        /*ConfBean[] confBean ={
-                new ConfBean("会议1",R.drawable.test,"会议简介"),
-                new ConfBean("会议2",R.drawable.test,"会议简介"),
-                new ConfBean("会议3",R.drawable.test,"会议简介"),
-                new ConfBean("会议4",R.drawable.test,"会议简介"),
-                new ConfBean("会议5",R.drawable.test,"会议简介"),
-                new ConfBean("会议6",R.drawable.test,"会议简介")
-        };
-
-        for (int i=0;i<100;i++){
-            Random random = new Random();
-            int index = random.nextInt(confBean.length);
-            dataList.add(confBean[index]);
-        }*/
         if(!confLoadState) {
             loadConf();
             confLoadState=true;
@@ -133,10 +122,12 @@ public class ConfViewFragment extends Fragment {
                 //Log.d("Easymeeting","confList size ="+list.size());
                 AVObject conference;
                 AVFile file;
-                for(int i=0;i<list.size();i++){
-                    conference=list.get(i);
-                    file=conference.getAVFile("image");
-                    dataList.add(new ConfBean(conference.getString("confName"),file.getUrl(),conference.getString("briefIntroduction"),conference));
+                if(list.size()>0) {
+                    for (int i = 0; i < list.size(); i++) {
+                        conference = list.get(i);
+                        file = conference.getAVFile("image");
+                        dataList.add(new ConfBean(conference.getString("confName"), file.getUrl(), conference));
+                    }
                 }
                 adapter=new ConfViewAdapter(conf_frag.getContext(),dataList);
                 conf_recv.setAdapter(adapter);
@@ -154,7 +145,11 @@ public class ConfViewFragment extends Fragment {
                 for(int i=0;i<list.size();i++){
                     conference=list.get(i);
                     file=conference.getAVFile("image");
-                    dataList.add(new ConfBean(conference.getString("confName"),file.getUrl(),conference.getString("confBriefIndroduction"),conference));
+                    if(file==null)
+                        dataList.add(new ConfBean(conference.getString("confName"),
+                                "http://lc-gls5n1w7.cn-n1.lcfile.com/d9d5450110185ffc607e.jpg",conference));
+                    else
+                        dataList.add(new ConfBean(conference.getString("confName"),file.getUrl(),conference));
                 }
                 reloadConfCallBack.reloadConf();
             }

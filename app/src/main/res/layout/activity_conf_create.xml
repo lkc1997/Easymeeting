@@ -117,16 +117,20 @@
             android:scaleType="centerCrop"/>
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/conf_description_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:id="@+id/conf_image_btn"
         android:onClick="selectConfImage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="选择图片"/>
 
     <Button
         android:id="@+id/info_push_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="sendConfInfo"
         android:text="提交" />

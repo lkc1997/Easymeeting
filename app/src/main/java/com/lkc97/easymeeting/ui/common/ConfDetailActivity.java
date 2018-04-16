@@ -19,6 +19,8 @@ import com.avos.avoscloud.GetCallback;
 import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class ConfDetailActivity extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class ConfDetailActivity extends AppCompatActivity {
     private TextView confTime;
     private ImageView confImage;
     private Button confParticipateBtn;
+    private TextView confBrief;
     static{
 
     }
@@ -40,6 +43,7 @@ public class ConfDetailActivity extends AppCompatActivity {
         confTime=(TextView)findViewById(R.id.conf_time_detail_activity);
         confImage=(ImageView)findViewById(R.id.conf_image_detail_activity);
         confParticipateBtn=(Button)findViewById(R.id.conf_participate_detail_activity_btn);
+        confBrief=(TextView)findViewById(R.id.conf_brief);
         /*取得来自B页面的数据，并显示到画面*/
         Bundle bundle = this.getIntent().getExtras();
         /*获取Bundle中的数据，注意类型和key*/
@@ -96,17 +100,26 @@ public class ConfDetailActivity extends AppCompatActivity {
         confName.setText(conference.getString("confName"));
         confPlace.setText("地点:"+conference.getString("confPlace"));
         confTime.setText("日期:"+conference.getString("date"));
-        Glide.with(this.getApplicationContext()).load(conference.getAVFile("image").getUrl()).into(confImage);
+        confBrief.setText(conference.getString("briefIntroduction"));
+        if(conference.getAVFile("image")==null)
+            Glide.with(this.getApplicationContext()).load("http://lc-gls5n1w7.cn-n1.lcfile.com/d9d5450110185ffc607e.jpg").into(confImage);
+        else
+            Glide.with(this.getApplicationContext()).load(conference.getAVFile("image").getUrl()).into(confImage);
     }
     public void checkParticipateState(){
         AVQuery<AVObject> query = new AVQuery<>("FollowedConference");
         query.whereEqualTo("conference", conference);
+        query.include("follower");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                if(list.size()>0) {
-                    confParticipateBtn.setText("已参加");
-                    confParticipateBtn.setEnabled(false);
+                String followerName;
+                for(AVObject followedConference:list){
+                    followerName=followedConference.getAVUser("follower").getUsername();
+                    if(followerName.equals(AVUser.getCurrentUser().getUsername())) {
+                        confParticipateBtn.setText("已参加");
+                        confParticipateBtn.setEnabled(false);
+                    }
                 }
             }
         });

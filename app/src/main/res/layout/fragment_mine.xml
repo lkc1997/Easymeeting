@@ -61,8 +61,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:gravity="end|center_vertical"
-                    android:hint="显示用户名" />
+                    android:gravity="end|center_vertical" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,8 +84,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:gravity="end|center_vertical"
-                    android:hint="显示邮箱" />
+                    android:gravity="end|center_vertical" />
             </LinearLayout>
 
             <LinearLayout
@@ -96,21 +94,6 @@
                 android:layout_below="@+id/email"
                 android:orientation="horizontal"
                 app:layout_heightPercent="8%">
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/password_icon" />
-
-                <TextView
-                    android:id="@+id/password_change"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:gravity="end|center_vertical"
-                    android:hint="点击修改密码" />
             </LinearLayout>
 
             <TextView
