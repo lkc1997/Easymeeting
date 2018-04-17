@@ -80,7 +80,6 @@ public class ConfViewFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
             @Override
             public void onRefresh() {
-                //mData.add(0, "嘿，我是“下拉刷新”生出来的");
                     dataList.clear();
                     reloadConf(new ReloadConfCallBack() {
                         @Override
