@@ -61,6 +61,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
+                    android:textSize="15dp"
                     android:gravity="end|center_vertical" />
             </LinearLayout>
 
@@ -84,6 +85,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
+                    android:textSize="15dp"
                     android:gravity="end|center_vertical" />
             </LinearLayout>
 
@@ -104,33 +106,44 @@
                 android:textSize="20sp"
                 app:layout_heightPercent="5%" />
 
-            <Button
-                android:id="@+id/buddy_list_mine_fragment"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/qr_Code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/social_txt"
-                android:text="好友放在toolbar"
-                app:layout_heightPercent="8%" />
+                android:orientation="horizontal"
+                app:layout_heightPercent="8%">
 
-            <Button
-                android:id="@+id/get_qrcode_btn"
-                android:layout_width="wrap_content"
-                android:layout_below="@+id/buddy_list_mine_fragment"
-                android:text="生产二维码"
-                app:layout_heightPercent="8%" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/qr_code" />
+
+                <TextView
+                    android:id="@+id/get_qrcode_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:hint="个人二维码"
+                    android:textSize="15dp"
+                    android:gravity="end|center_vertical" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/logout_btn"
-                android:layout_width="wrap_content"
-                android:layout_below="@+id/get_qrcode_btn"
-                android:text="注销"
-                app:layout_heightPercent="8%" />
-
-            <Button
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_below="@+id/logout_btn"
-                android:text="test"
-                app:layout_heightPercent="8%" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/qr_Code"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/material_red_A200"
+                android:hint="注  销"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:gravity="center" />
 
         </android.support.percent.PercentRelativeLayout>
 

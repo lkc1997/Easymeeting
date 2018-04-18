@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/circularProgresslibrary" />
+            <option value="$PROJECT_DIR$/circular_progress" />
             <option value="$PROJECT_DIR$/leancloudchatkit" />
           </set>
         </option>

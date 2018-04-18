@@ -4,8 +4,8 @@
 
     <gradient
         android:angle="45"
-        android:endColor="#CCCCCC"
-        android:startColor="#CCCCCC" />
+        android:endColor="@color/fbutton_color_transparent"
+        android:startColor="@color/fbutton_color_transparent" />
     <padding
         android:bottom="7dp"
         android:left="7dp"
@@ -16,6 +16,6 @@
     <stroke
         android:width="5px"
         android:color="#1199EF" />
-    <solid android:color="#CCCCCC" />
+    <solid android:color="@color/fbutton_color_transparent" />
 
 </shape>

@@ -43,6 +43,7 @@ dependencies {
     compile 'com.android.support:percent:25.3.1'
     compile 'me.relex:circleindicator:1.2.2@aar'
     compile 'com.github.jd-alexander:android-flat-button:v1.1'
+    compile 'com.github.florent37:materialtextfield:1.0.7'
 
 }
 dependencies {

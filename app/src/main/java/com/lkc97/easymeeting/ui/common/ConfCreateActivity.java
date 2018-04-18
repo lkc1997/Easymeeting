@@ -14,6 +14,7 @@ import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,8 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.google.gson.Gson;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.util.GetJsonDataUtil;
 import com.lkc97.easymeeting.ui.adapter.JsonBean;
+import com.lkc97.easymeeting.util.GetJsonDataUtil;
 
 import org.json.JSONArray;
 
@@ -53,6 +54,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
     public static final int CHOOSE_PHOTO=2;
     AVFile confImage=null;
     String imageAbsolutePath=null;
+    private Toolbar mToolbarConfCreat;
     private EditText confName;
     private Button confPlace;
     private Button confDate;
@@ -75,6 +77,10 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conf_create);
+
+        mToolbarConfCreat = (Toolbar) findViewById(R.id.conf_creat_toolbar) ;
+        mToolbarConfCreat.setTitle("创建会议");
+        setSupportActionBar(mToolbarConfCreat);
 
         //等数据加载完毕再初始化并显示Picker,以免还未加载完数据就显示,造成APP崩溃。
         initLunarPicker();
@@ -105,7 +111,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
             pvStartTime.show(); //弹出会议开始时间选择器
         } else if (v.getId() == R.id.conf_endtime_btn && pvEndTime != null) {
             pvEndTime.show(); //弹出会议结束时间选择器
-        }else if (v.getId() == R.id.conf_placeJsonData_btn) {
+        } else if (v.getId() == R.id.conf_placeJsonData_btn) {
             mHandler.sendEmptyMessage(MSG_LOAD_DATA);
         } else if (v.getId() == R.id.conf_place_img) {//跳转到 省市区解析示例页面
             if (isLoaded) {
@@ -154,6 +160,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
             finish();
         }
     }
+
     public void selectConfImage(View v){
         findImage();
     }
@@ -175,10 +182,8 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
                         handleImageBeforeKitKat(data);
                     }
                 }
-                Toast.makeText(getApplicationContext(), "选择文件"+imageAbsolutePath,
-                        Toast.LENGTH_SHORT).show();
-                break;
-            default:
+                //Toast.makeText(getApplicationContext(), "选择文件"+imageAbsolutePath,
+                  //      Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -2,15 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.common.ConfCreateActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/conf_creat_toolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp">
 
         <ImageView
             android:layout_width="0dp"
@@ -26,10 +36,19 @@
             android:hint="请输入会议名称" />
     </LinearLayout>
 
+    <View
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_orange_300" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp">
         <ImageView
             android:id="@+id/conf_place_img"
             android:layout_width="0dp"
@@ -41,14 +60,25 @@
             android:id="@+id/conf_placeJsonData_btn"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="7"
+            android:layout_weight="6"
+            android:textColor="@color/material_blue_A200"
+            android:background="@color/fbutton_color_transparent"
             android:hint="请先点击图标加载数据，再继续选择会议地点" />
     </LinearLayout>
+
+    <View
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_orange_300" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp">
         <ImageView
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -60,19 +90,30 @@
             android:layout_height="50dp"
             android:layout_weight="7"
             android:hint="会议日期请选择"
-            android:gravity="right" />
+            android:textColor="@color/material_blue_A200"
+            android:background="@color/fbutton_color_transparent"
+            android:gravity="right|center_vertical" />
         <ImageView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:src="@drawable/arrow"
             android:scaleType="centerCrop"/>
     </LinearLayout>
 
+    <View
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_orange_300" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp">
         <ImageView
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -84,19 +125,30 @@
             android:layout_height="50dp"
             android:layout_weight="7"
             android:hint="会议开始时间请选择"
-            android:gravity="right" />
+            android:textColor="@color/material_blue_A200"
+            android:background="@color/fbutton_color_transparent"
+            android:gravity="right|center_vertical" />
         <ImageView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:src="@drawable/arrow"
             android:scaleType="centerCrop"/>
     </LinearLayout>
 
+    <View
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_orange_300" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp">
         <ImageView
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -108,25 +160,45 @@
             android:layout_height="50dp"
             android:layout_weight="7"
             android:hint="会议结束时间请选择"
-            android:gravity="right" />
+            android:textColor="@color/material_blue_A200"
+            android:background="@color/fbutton_color_transparent"
+            android:gravity="right|center_vertical" />
         <ImageView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:src="@drawable/arrow"
             android:scaleType="centerCrop"/>
     </LinearLayout>
 
+    <View
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/material_orange_300" />
+
     <EditText
         android:id="@+id/conf_description_edittext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="请输入会议简介"
+        android:textCursorDrawable="@color/material_orange_100"
+        android:background="@drawable/border"/>
+
     <Button
         android:id="@+id/conf_image_btn"
+        android:layout_width="196dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
         android:onClick="selectConfImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="选择图片"/>
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:text="选择图片"
+        android:textStyle="bold"
+        android:background="@color/material_orange_500"/>
 
     <Button
         android:id="@+id/info_push_btn"

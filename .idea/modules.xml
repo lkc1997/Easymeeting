@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Easymeeting.iml" filepath="$PROJECT_DIR$/Easymeeting.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circularProgresslibrary/circularProgresslibrary.iml" filepath="$PROJECT_DIR$/circularProgresslibrary/circularProgresslibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circular_progress/circular_progress.iml" filepath="$PROJECT_DIR$/circular_progress/circular_progress.iml" />
       <module fileurl="file://$PROJECT_DIR$/leancloudchatkit/leancloudchatkit.iml" filepath="$PROJECT_DIR$/leancloudchatkit/leancloudchatkit.iml" />
     </modules>
   </component>

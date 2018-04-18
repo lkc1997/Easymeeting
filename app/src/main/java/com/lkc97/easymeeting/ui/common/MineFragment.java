@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,26 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.FindCallback;
-import com.avos.avoscloud.im.v2.AVIMChatRoom;
-import com.avos.avoscloud.im.v2.AVIMConversation;
-import com.avos.avoscloud.im.v2.AVIMException;
-import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.leancloud.chatkit.LCChatKit;
 
 public class MineFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
@@ -46,8 +34,7 @@ public class MineFragment extends Fragment{
 
     private Toolbar mToolbarMine;
     private View view;
-    private Button buddyListBtn;
-    private Button getQRcodeBtn;
+    private TextView getQRcodeBtn;
     private Button lotOutBtn;
     private TextView username;
     private TextView emailaddress;
@@ -111,8 +98,7 @@ public class MineFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mine, container, false);
-        buddyListBtn=(Button)view.findViewById(R.id.buddy_list_mine_fragment);
-        getQRcodeBtn=(Button)view.findViewById(R.id.get_qrcode_btn);
+        getQRcodeBtn=(TextView) view.findViewById(R.id.get_qrcode_btn);
         lotOutBtn=(Button)view.findViewById(R.id.logout_btn);
         username=(TextView)view.findViewById(R.id.username);
         emailaddress=(TextView)view.findViewById(R.id.email_box);
@@ -123,13 +109,6 @@ public class MineFragment extends Fragment{
         mToolbarMine.setTitle("我的");
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMine);
 
-        buddyListBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                MainActivity mainActivity=(MainActivity)getActivity();
-                mainActivity.openBuddyActivity();
-            }
-        });
         idList.add("lkc");
         idList.add("thx");
         getQRcodeBtn.setOnClickListener(new View.OnClickListener(){
