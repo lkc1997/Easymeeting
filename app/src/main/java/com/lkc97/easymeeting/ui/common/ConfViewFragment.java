@@ -62,10 +62,10 @@ public class ConfViewFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.toolbar_search) {
-            Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.toolbar_chat) {
-            Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
             MainActivity mainActivity=(MainActivity)getActivity();
             mainActivity.openBuddyActivity();
         }
@@ -104,6 +104,11 @@ public class ConfViewFragment extends Fragment {
         conf_recv = (RecyclerView) conf_frag.findViewById(R.id.conf_view_fragment_conf_view);
         GridLayoutManager layoutManager = new GridLayoutManager(context,2);
         conf_recv.setLayoutManager(layoutManager);
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        confLoadState=false;
     }
 
     private void showData() {

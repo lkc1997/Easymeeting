@@ -92,10 +92,10 @@ public class MyConfFragment extends Fragment implements View.OnClickListener{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.toolbar_search) {
-            Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.toolbar_chat) {
-            Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
             MainActivity mainActivity=(MainActivity)getActivity();
             mainActivity.openBuddyActivity();
         }
@@ -116,7 +116,6 @@ public class MyConfFragment extends Fragment implements View.OnClickListener{
         mToolbarMyConf = (Toolbar) view.findViewById(R.id.frag_myconf_toolbar);
         mToolbarMyConf.setTitle("会议");
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMyConf);
-
 
         mainActivity=(MainActivity)getActivity();
         viewPager.setAdapter(new SamplePagerAdapter());
