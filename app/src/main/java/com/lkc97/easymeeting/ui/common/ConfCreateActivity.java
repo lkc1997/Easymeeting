@@ -182,8 +182,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
                         handleImageBeforeKitKat(data);
                     }
                 }
-                //Toast.makeText(getApplicationContext(), "选择文件"+imageAbsolutePath,
-                  //      Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "成功选择", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
