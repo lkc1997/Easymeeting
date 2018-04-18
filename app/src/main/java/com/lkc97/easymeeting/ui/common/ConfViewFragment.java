@@ -65,7 +65,7 @@ public class ConfViewFragment extends Fragment {
             //Toast.makeText(getActivity(), "补充搜索界面",Toast.LENGTH_SHORT).show();
         }
         if (id == R.id.toolbar_chat) {
-            //Toast.makeText(getActivity(), "跳转到聊天界面",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "正在加载聊天界面",Toast.LENGTH_SHORT).show();
             MainActivity mainActivity=(MainActivity)getActivity();
             mainActivity.openBuddyActivity();
         }
@@ -106,8 +106,8 @@ public class ConfViewFragment extends Fragment {
         conf_recv.setLayoutManager(layoutManager);
     }
     @Override
-    public void onDestroy(){
-        super.onDestroy();
+    public void onDetach(){
+        super.onDetach();
         confLoadState=false;
     }
 
