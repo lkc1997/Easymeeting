@@ -16,11 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVUser;
+import com.bumptech.glide.Glide;
 import com.lkc97.easymeeting.R;
 import com.lkc97.easymeeting.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MineFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
@@ -38,7 +41,7 @@ public class MineFragment extends Fragment{
     private Button lotOutBtn;
     private TextView username;
     private TextView emailaddress;
-    private List<String> idList=new ArrayList<>();
+    private CircleImageView circleImageView;
     public MineFragment() {
         // Required empty public constructor
     }
@@ -98,6 +101,7 @@ public class MineFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mine, container, false);
+        circleImageView=(CircleImageView)view.findViewById(R.id.user_img);
         getQRcodeBtn=(TextView) view.findViewById(R.id.get_qrcode_btn);
         lotOutBtn=(Button)view.findViewById(R.id.logout_btn);
         username=(TextView)view.findViewById(R.id.username);
@@ -105,12 +109,12 @@ public class MineFragment extends Fragment{
         username.setText(AVUser.getCurrentUser().getUsername());
         emailaddress.setText(AVUser.getCurrentUser().getEmail());
         //add toolbar
+        Glide.with(view.getContext()).load(AVUser.getCurrentUser().getAVFile("avatar").getUrl()).into(circleImageView);
         mToolbarMine = (Toolbar) view.findViewById(R.id.frag_mine_toolbar);
         mToolbarMine.setTitle("我的");
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbarMine);
 
-        idList.add("lkc");
-        idList.add("thx");
+
         getQRcodeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -121,7 +125,6 @@ public class MineFragment extends Fragment{
         lotOutBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
                 MainActivity mainActivity=(MainActivity)getActivity();
                 mainActivity.openLoginActivity();
             }
