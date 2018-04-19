@@ -154,6 +154,7 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
             conference.put("endTime", sConfEndTime);
             conference.put("creator", AVUser.getCurrentUser().getUsername());
             conference.put("briefIntroduction",confDescription);
+            conference.put("search","1");
             conference.saveInBackground();// 保存到服务端
             Toast.makeText(getApplicationContext(), "成功申请会议",
                     Toast.LENGTH_SHORT).show();

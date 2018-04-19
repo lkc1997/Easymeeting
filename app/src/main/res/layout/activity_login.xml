@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context="com.lkc97.easymeeting.ui.login.LoginActivity">
 
+    <ImageView
+        android:id="@+id/app_logo_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:src="@drawable/logo" />
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
