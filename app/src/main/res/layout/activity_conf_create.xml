@@ -198,13 +198,19 @@
         android:textSize="20sp"
         android:text="选择图片"
         android:textStyle="bold"
-        android:background="@color/material_orange_500"/>
+        android:background="@color/material_yellow_300"/>
 
     <Button
         android:id="@+id/info_push_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="196dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
         android:onClick="sendConfInfo"
-        android:text="提交" />
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:text="确认提交"
+        android:textStyle="bold"
+        android:background="@color/material_yellow_300"/>
 
 </LinearLayout>
