@@ -1,22 +1,16 @@
 package com.lkc97.easymeeting.ui.register;
 
-import android.annotation.TargetApi;
-import android.content.ContentUris;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
@@ -26,12 +20,12 @@ import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.lkc97.easymeeting.R;
-import com.lkc97.easymeeting.ui.MainActivity;
 
 import cn.leancloud.chatkit.LCChatKit;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final int CHOOSE_PHOTO=2;
+    private Toolbar mToolbarRegister;
     private EditText usernamerEdittxt=null;
     private EditText passwordEdittext=null;
     private EditText emailAddress=null;
@@ -83,6 +77,11 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        mToolbarRegister = (Toolbar) findViewById(R.id.register_toolbar) ;
+        mToolbarRegister.setTitle("注册");
+        setSupportActionBar(mToolbarRegister);
+
         usernamerEdittxt=(EditText)findViewById(R.id.username_edittxt);
         passwordEdittext=(EditText)findViewById(R.id.password_edittxt);
         emailAddress=(EditText)findViewById(R.id.email_address_exittext);
