@@ -111,9 +111,9 @@ public class ConfCreateActivity extends AppCompatActivity implements View.OnClic
             pvStartTime.show(); //弹出会议开始时间选择器
         } else if (v.getId() == R.id.conf_endtime_btn && pvEndTime != null) {
             pvEndTime.show(); //弹出会议结束时间选择器
-        } else if (v.getId() == R.id.conf_placeJsonData_btn) {
+        } else if (v.getId() == R.id.conf_place_img) {
             mHandler.sendEmptyMessage(MSG_LOAD_DATA);
-        } else if (v.getId() == R.id.conf_place_img) {//跳转到 省市区解析示例页面
+        } else if (v.getId() == R.id.conf_placeJsonData_btn) {//跳转到 省市区解析示例页面
             if (isLoaded) {
                 showPickerView();
             } else {
