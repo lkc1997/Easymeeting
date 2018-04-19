@@ -1,38 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fbutton_color_silver"
     tools:context="com.lkc97.easymeeting.ui.register.RegisterActivity">
-    <EditText
-        android:id="@+id/username_edittxt"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/register_toolbar"
+        android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:id="@+id/username"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="请输入账号"/>
-    <EditText
-        android:id="@+id/password_edittxt"
-        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="20dp"
+        app:mtf_cardCollapsedHeight="4dp"
+        app:mtf_hasFocus="false"
+        app:mtf_image="@drawable/ic_username_white_24dp"
+        app:mtf_openKeyboardOnFocus="true">
+
+        <!--
+        app:mtf_animationDuration="1000"
+        app:mtf_cardColor="@color/cardview_dark_background"
+        app:mtf_labelColor="@android:color/holo_red_dark"
+        app:mtf_openKeyboardOnFocus="true"
+        -->
+
+        <EditText
+            android:id="@+id/username_edittxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入用户名"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="15sp" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:id="@+id/address"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="请输入密码"
-        android:layout_below="@+id/username_edittxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <EditText
-        android:id="@+id/email_address_exittext"
-        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="20dp"
+        app:mtf_cardCollapsedHeight="4dp"
+        app:mtf_hasFocus="false"
+        app:mtf_image="@drawable/ic_email_white_24dp"
+        app:mtf_openKeyboardOnFocus="true">
+
+        <!--
+        app:mtf_animationDuration="1000"
+        app:mtf_cardColor="@color/cardview_dark_background"
+        app:mtf_labelColor="@android:color/holo_red_dark"
+        app:mtf_openKeyboardOnFocus="true"
+        -->
+
+        <EditText
+            android:id="@+id/email_address_exittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入邮箱地址"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="15sp" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:id="@+id/password"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="请输入邮箱"
-        android:layout_below="@+id/password_edittxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="20dp"
+        app:mtf_cardCollapsedHeight="4dp"
+        app:mtf_hasFocus="false"
+        app:mtf_image="@drawable/ic_code_white_24dp"
+        app:mtf_openKeyboardOnFocus="true">
+
+        <!--
+        app:mtf_animationDuration="1000"
+        app:mtf_cardColor="@color/cardview_dark_background"
+        app:mtf_labelColor="@android:color/holo_red_dark"
+        app:mtf_openKeyboardOnFocus="true"
+        -->
+
+        <EditText
+            android:id="@+id/password_edittxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="15sp" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+
     <Button
         android:id="@+id/register_btn"
         android:onClick="registerOnclick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:hint="注册"
-        android:layout_below="@+id/email_address_exittext"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
+        android:textColorHint="@android:color/white"
+        android:background="@drawable/register_circle"/>
+</LinearLayout>
